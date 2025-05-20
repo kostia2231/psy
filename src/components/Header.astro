@@ -6,11 +6,17 @@
         <div class="max-w-screen-xl mx-auto px-4">
             <div class="text overflow-x-auto">
                 <div class="flex justify-center gap-5 flex-wrap">
-                    <p class="whitespace-nowrap">Про мене</p>
-                    <p class="whitespace-nowrap">Умови</p>
-                    <p class="whitespace-nowrap">Освіта і підготовка</p>
-                    <p class="whitespace-nowrap">Групи і майстер-класи</p>
-                    <p class="whitespace-nowrap">Контакти</p>
+                    <a id="toAbout" class="whitespace-nowrap pointer"
+                        >Про мене</a
+                    >
+                    <a id="toPrice" class="whitespace-nowrap">Умови</a>
+                    <a id="toEducation" class="whitespace-nowrap"
+                        >Освіта і підготовка</a
+                    >
+                    <a id="toGroups" class="whitespace-nowrap"
+                        >Групи і майстер-класи</a
+                    >
+                    <a id="toContacts" class="whitespace-nowrap">Контакти</a>
                 </div>
             </div>
         </div>
@@ -21,19 +27,82 @@
     let lastScrollTop = 0;
     const navbar = document.getElementById("navbar");
     const navbarHeight = navbar ? navbar.offsetHeight : 0;
-
     function handleScroll() {
         const scrollTop =
             window.pageYOffset || document.documentElement.scrollTop;
-
         if (navbar && scrollTop > lastScrollTop && scrollTop > navbarHeight) {
             navbar.style.transform = "translateY(-150%)";
         } else {
             navbar.style.transform = "translateY(0)";
         }
-
         lastScrollTop = scrollTop;
     }
+    window.addEventListener("scroll", handleScroll, {
+        passive: true,
+    });
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    document.getElementById("toAbout").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.documentElement.classList.remove("visible");
+        history.pushState(null, null, "#about");
+        location.reload();
+    });
+
+    document.getElementById("toPrice").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.documentElement.classList.remove("visible");
+        history.pushState(null, null, "#price");
+        location.reload();
+    });
+
+    document.getElementById("toEducation").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.documentElement.classList.remove("visible");
+        history.pushState(null, null, "#education");
+        location.reload();
+    });
+
+    document.getElementById("toContacts").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.documentElement.classList.remove("visible");
+        history.pushState(null, null, "#contacts");
+        location.reload();
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+        const hash = window.location.hash;
+
+        document.documentElement.classList.add("visible");
+        if (hash === "#about") {
+            const target = document.getElementById("about");
+            if (target) {
+                target.scrollIntoView({ behavior: "instant", block: "start" });
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+
+        if (hash === "#price") {
+            const target = document.getElementById("price");
+            if (target) {
+                target.scrollIntoView({ behavior: "instant", block: "start" });
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+
+        if (hash === "#education") {
+            const target = document.getElementById("education");
+            if (target) {
+                target.scrollIntoView({ behavior: "instant", block: "start" });
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+
+        if (hash === "#contacts") {
+            const target = document.getElementById("contacts");
+            if (target) {
+                target.scrollIntoView({ behavior: "instant", block: "start" });
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+    });
 </script>

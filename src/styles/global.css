@@ -6,6 +6,12 @@ html {
     width: 100%;
     height: auto;
     overflow-x: hidden;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+html.visible {
+    opacity: 1;
 }
 
 .text {
@@ -34,6 +40,7 @@ html {
     font-size: 150px;
     line-height: 134px;
 }
+
 h1 {
     font-family: Helvetica, sans-serif;
     letter-spacing: 0.04rem;
