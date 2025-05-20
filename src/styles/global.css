@@ -14,6 +14,10 @@ html.visible {
     opacity: 1;
 }
 
+.yellow {
+    background-color: rgba(202, 191, 99, 1);
+}
+
 .text {
     font-family: Helvetica, sans-serif;
     font-size: 22px;
@@ -24,7 +28,7 @@ html.visible {
 .text_small {
     font-family: Helvetica, sans-serif;
     font-size: 14px;
-    line-height: 16px;
+    line-height: 18px;
     font-weight: 300;
     letter-spacing: 0.04rem;
 }
@@ -47,4 +51,9 @@ h1 {
     font-size: 60px;
     font-weight: 300;
     line-height: 54px;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0px);
 }

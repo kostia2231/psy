@@ -6,17 +6,21 @@
         <div class="max-w-screen-xl mx-auto px-4">
             <div class="text overflow-x-auto">
                 <div class="flex justify-center gap-5 flex-wrap">
-                    <a id="toAbout" class="whitespace-nowrap pointer"
+                    <a id="toAbout" class="whitespace-nowrap cursor-pointer"
                         >Про мене</a
                     >
-                    <a id="toPrice" class="whitespace-nowrap">Умови</a>
-                    <a id="toEducation" class="whitespace-nowrap"
+                    <a id="toPrice" class="whitespace-nowrap cursor-pointer"
+                        >Умови</a
+                    >
+                    <a id="toEducation" class="whitespace-nowrap cursor-pointer"
                         >Освіта і підготовка</a
                     >
-                    <a id="toGroups" class="whitespace-nowrap"
+                    <a id="toGroups" class="whitespace-nowrap cursor-pointer"
                         >Групи і майстер-класи</a
                     >
-                    <a id="toContacts" class="whitespace-nowrap">Контакти</a>
+                    <a id="toContacts" class="whitespace-nowrap cursor-pointer"
+                        >Контакти</a
+                    >
                 </div>
             </div>
         </div>
@@ -69,6 +73,13 @@
         location.reload();
     });
 
+    document.getElementById("toGroups").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.documentElement.classList.remove("visible");
+        history.pushState(null, null, "#groups");
+        location.reload();
+    });
+
     window.addEventListener("DOMContentLoaded", () => {
         const hash = window.location.hash;
 
@@ -99,6 +110,14 @@
 
         if (hash === "#contacts") {
             const target = document.getElementById("contacts");
+            if (target) {
+                target.scrollIntoView({ behavior: "instant", block: "start" });
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+
+        if (hash === "#groups") {
+            const target = document.getElementById("groups");
             if (target) {
                 target.scrollIntoView({ behavior: "instant", block: "start" });
                 history.replaceState(null, null, window.location.pathname);

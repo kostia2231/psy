@@ -14,6 +14,7 @@ import Nine from "../components/Nine.astro";
 import Ten from "../components/Ten.astro";
 import Eleven from "../components/Eleven.astro";
 import Twelve from "../components/Twelve.astro";
+import Groups from "../components/Groups.astro";
 import Footer from "../components/Footer.astro";
 ---
 
@@ -33,6 +34,7 @@ import Footer from "../components/Footer.astro";
         <Ten />
         <Eleven />
         <Twelve />
+        <Groups />
         <Footer />
     </div>
 </Layout>
@@ -41,4 +43,24 @@ import Footer from "../components/Footer.astro";
     if ("scrollRestoration" in history) {
         history.scrollRestoration = "manual";
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const elements = document.querySelectorAll(".fade-in");
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+            },
+        );
+
+        elements.forEach((el) => observer.observe(el));
+    });
 </script>
