@@ -1,11 +1,45 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import First from "../components/First.astro";
+import Second from "../components/Second.astro";
+import Third from "../components/Third.astro";
+import Fourth from "../components/Fourth.astro";
+import Price from "../components/Price.astro";
+import Fivth from "../components/Fivth.astro";
+import Sixth from "../components/Sixth.astro";
+import Seventh from "../components/Seventh.astro";
+import Eight from "../components/Eight.astro";
+import Nine from "../components/Nine.astro";
+import Ten from "../components/Ten.astro";
+import Eleven from "../components/Eleven.astro";
+import Twelve from "../components/Twelve.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
-	<Welcome />
+    <Header />
+    <div class="flex flex-col">
+        <First />
+        <Second />
+        <Third />
+        <Fourth />
+        <Price />
+        <Fivth />
+        <Sixth />
+        <Seventh />
+        <Eight />
+        <Nine />
+        <Ten />
+        <Eleven />
+        <Twelve />
+
+        <Footer />
+    </div>
 </Layout>
+
+<script is:inline>
+    if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+    }
+</script>

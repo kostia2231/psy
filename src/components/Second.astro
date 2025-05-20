@@ -1,0 +1,28 @@
+---
+import Button from "./Button.astro";
+---
+
+<div id="second" class="bg-gray-100 h-[50vh] w-full flex flex-col rounded_top">
+    <div class="flex flex-col mb-auto w-full mt-10 ml-10">
+        <Button />
+    </div>
+    <!-- <div class="flex flex-col mt-auto w-full mb-5 z-10">
+        <!-- <p class="text w-fit mx-auto">читати далі</p> -->
+</div>
+
+<script is:inline>
+    const el = document.getElementById("second");
+
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+            if (entry.isIntersecting) {
+                el.classList.add("sticky", "top-0", "z-10");
+            } else {
+                el.classList.remove("sticky", "top-0", "z-10");
+            }
+        },
+        { threshold: 0.1 },
+    );
+
+    observer.observe(el);
+</script>
