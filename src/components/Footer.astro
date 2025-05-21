@@ -2,36 +2,137 @@
 import Button from "./Button.astro";
 ---
 
-<div
-    id="contacts"
-    class="h-[50vh] w-full sticky top-0 bg-white rounded_top z-30 text-black/70"
->
-    <div class="flex flex-col justify-center items-center h-full w-full gap-5">
+<div id="contacts" class="h-full w-full sticky top-0 bg-white z-30">
+    <div
+        class="absolute top-0 left-10 right-10 h-[2px] yellow z-10 transform -translate-y-1/2 rounded-full"
+    >
+    </div>
+    <div
+        class="h-[50vh] flex flex-col justify-center items-center w-full gap-5 bg-white rounded_top"
+    >
         <Button />
         <div class="text">
             *Консультація можлива українською та російською мовами.
         </div>
     </div>
 
-    <footer
-        class="h-[50vh] yellow rounded_top p-10 flex flex-col justify-between z-30"
-    >
-        <div class="text_small grid grid-cols-2 gap-20">
-            <div>
-                Марія Пархоменко <br /> лікарка, гештальт-консультантка, ведуча терапевтичних
-                груп. <br /><br />©2025. Усі права захищені.
+    <div class="h-fit gray">
+        <footer
+            class="h-[50vh] yellow rounded_top p-10 flex flex-col justify-between z-30"
+        >
+            <div class="text_small grid grid-cols-2 gap-20">
+                <div>
+                    Марія Пархоменко <br /> лікарка, гештальт-консультантка, ведуча
+                    терапевтичних груп. <br /><br />©2025. Усі права захищені.
+                </div>
+                <div>
+                    Карта сайту: <br />
+                    <a href="">Головна</a> | <a
+                        id="toAboutFooter"
+                        class="cursor-pointer">Про мене</a
+                    > |
+                    <a class="cursor-pointer" id="toPriceFooter">Умови</a> | <a
+                        class="cursor-pointer"
+                        id="toEducationFooter">Освіта і підготовка</a
+                    > | <a class="cursor-pointer" id="toGroupsFooter"
+                        >Групи і майстер-класи</a
+                    > | <a class="cursor-pointer" id="toContactsFooter"
+                        >Контакти</a
+                    >.
+                </div>
             </div>
-            <div>
-                Карта сайту: <br />
-                Головна, Про мене, Умови, Освіта і підготовка, Групи і майстер-класи,
-                Контакти.
+            <div class="text flex justify-between">
+                <div>
+                    Для зв'язку можете написати мені на [ пошту ] або [ telegram
+                    ], <br />знайти мене в instagram можна по ніку [ @parhomak ]
+                </div>
             </div>
-        </div>
-        <div class="text flex justify-between">
-            <div>
-                Для зв'язку можете написати мені на [ пошту ] або [ telegram ], <br
-                />знайти мене в instagram можна по ніку [ @parhomak ]
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 </div>
+
+<script is:inline>
+    document.getElementById("toAboutFooter").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.documentElement.classList.remove("visible");
+        history.pushState(null, null, "#about");
+        location.reload();
+    });
+
+    document.getElementById("toPriceFooter").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.documentElement.classList.remove("visible");
+        history.pushState(null, null, "#price");
+        location.reload();
+    });
+
+    document
+        .getElementById("toEducationFooter")
+        .addEventListener("click", (e) => {
+            e.preventDefault();
+            document.documentElement.classList.remove("visible");
+            history.pushState(null, null, "#education");
+            location.reload();
+        });
+
+    document
+        .getElementById("toContactsFooter")
+        .addEventListener("click", (e) => {
+            e.preventDefault();
+            document.documentElement.classList.remove("visible");
+            history.pushState(null, null, "#contacts");
+            location.reload();
+        });
+
+    document.getElementById("toGroupsFooter").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.documentElement.classList.remove("visible");
+        history.pushState(null, null, "#groups");
+        location.reload();
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+        const hash = window.location.hash;
+
+        document.documentElement.classList.add("visible");
+        if (hash === "#about") {
+            const target = document.getElementById("about");
+            if (target) {
+                target.scrollIntoView({ behavior: "instant", block: "start" });
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+
+        if (hash === "#price") {
+            const target = document.getElementById("price");
+            if (target) {
+                target.scrollIntoView({ behavior: "instant", block: "start" });
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+
+        if (hash === "#education") {
+            const target = document.getElementById("education");
+            if (target) {
+                target.scrollIntoView({ behavior: "instant", block: "start" });
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+
+        if (hash === "#contacts") {
+            const target = document.getElementById("contacts");
+            if (target) {
+                target.scrollIntoView({ behavior: "instant", block: "start" });
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+
+        if (hash === "#groups") {
+            const target = document.getElementById("groups");
+            if (target) {
+                target.scrollIntoView({ behavior: "instant", block: "start" });
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+    });
+</script>

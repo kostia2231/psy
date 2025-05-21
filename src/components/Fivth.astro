@@ -2,11 +2,17 @@
 import Button from "./Button.astro";
 ---
 
-<div class="h-[50vh] w-full sticky top-0 z-22 bg-white rounded_top">
-    <div class="flex flex-col justify-center items-center h-full w-full gap-5">
+<div class="h-[50vh] w-full sticky top-0 bg-white z-22">
+    <div
+        class="flex flex-col justify-center items-center h-full w-full gap-5 bg-white rounded_top"
+    >
         <Button />
         <div class="text">
             *Консультація можлива українською та російською мовами.
         </div>
+    </div>
+    <div
+        class="absolute top-0 left-10 right-10 h-[2px] yellow z-10 transform -translate-y-1/2 rounded-full"
+    >
     </div>
 </div>

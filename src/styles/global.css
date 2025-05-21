@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 html {
+    background-color: rgba(243, 243, 238, 1);
     margin: 0;
+    text-color: white;
     box-sizing: border-box;
     width: 100%;
     height: auto;
@@ -15,31 +17,65 @@ html.visible {
 }
 
 .yellow {
-    background-color: rgba(202, 191, 99, 1);
+    background-color: rgba(229, 226, 141, 1);
+}
+.gray {
+    background-color: rgba(243, 243, 238, 1);
+}
+.gray-opacity {
+    background-color: rgba(241, 242, 234, 0.85);
+}
+.black {
+    background-color: rgba(31, 31, 31, 1);
+}
+
+.pink {
+    background-color: rgba(245, 195, 196, 1);
+}
+
+.bg-devider {
+    background-color: rgba(230, 230, 230, 1);
 }
 
 .text {
     font-family: Helvetica, sans-serif;
     font-size: 22px;
     line-height: 28px;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.04rem;
+    color: rgb(41, 37, 36);
 }
+
+.text-button {
+    font-family: Helvetica, sans-serif;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 400;
+    letter-spacing: 0.04rem;
+    color: white;
+}
+
 .text_small {
+    color: rgb(41, 37, 36)
     font-family: Helvetica, sans-serif;
     font-size: 14px;
     line-height: 18px;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.04rem;
 }
 .rounded_small {
-    border-radius: 5px;
+    border-radius: 8px;
 }
 .rounded_top {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    /* border-top-left-radius: 2% 2%;
+    border-top-right-radius: 2% 2%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; */
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 .price {
+    color: rgb(41, 37, 36);
     font-weight: 300;
     font-size: 150px;
     line-height: 134px;
@@ -49,8 +85,9 @@ h1 {
     font-family: Helvetica, sans-serif;
     letter-spacing: 0.04rem;
     font-size: 60px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 54px;
+    color: rgb(41, 37, 36);
 }
 
 .fade-in.visible {
