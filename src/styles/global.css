@@ -1,16 +1,20 @@
 @import "tailwindcss";
 
 html {
+
     background-color: rgba(243, 243, 238, 1);
     margin: 0;
     text-color: white;
     box-sizing: border-box;
-    width: 100%;
+    /* width: 100wh; */
     height: auto;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     opacity: 0;
     transition: opacity 1s ease;
+    position: flex;
+    flex-direction: column;
 }
+
 
 html.visible {
     opacity: 1;
@@ -26,7 +30,7 @@ html.visible {
     background-color: rgba(241, 242, 234, 0.85);
 }
 .black {
-    background-color: rgba(31, 31, 31, 1);
+    background-color: rgba(41, 37, 36, 1);
 }
 
 .pink {
@@ -38,7 +42,7 @@ html.visible {
 }
 
 .text {
-    font-family: Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 22px;
     line-height: 28px;
     font-weight: 400;
@@ -46,13 +50,22 @@ html.visible {
     color: rgb(41, 37, 36);
 }
 
+.text_md {
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 600;
+    letter-spacing: 0.04rem;
+    color: rgb(41, 37, 36);
+}
+
 .text-button {
-    font-family: Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 22px;
     line-height: 28px;
     font-weight: 400;
     letter-spacing: 0.04rem;
-    color: white;
+    /* color: white; */
 }
 
 .text_small {
@@ -64,19 +77,16 @@ html.visible {
     letter-spacing: 0.04rem;
 }
 .rounded_small {
-    border-radius: 8px;
+    border-radius: 10px;
 }
 .rounded_top {
-    /* border-top-left-radius: 2% 2%;
-    border-top-right-radius: 2% 2%;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0; */
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
 .price {
     color: rgb(41, 37, 36);
-    font-weight: 300;
+    font-weight: 400;
+    letter-spacing: -0.04rem;
     font-size: 150px;
     line-height: 134px;
 }
@@ -94,3 +104,5 @@ h1 {
     opacity: 1;
     transform: translateY(0px);
 }
+
+/* */

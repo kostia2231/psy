@@ -7,13 +7,27 @@ import Button from "./Button.astro";
         <div class="flex flex-col mb-auto mt-10 ml-10">
             <Button />
         </div>
-        <!-- <div class="flex flex-col mt-auto w-full mb-5 z-10">
-        <!-- <p class="text w-fit mx-auto">читати далі</p> -->
+    </div>
+
+    <div
+        class="absolute right-10 bottom-10 transform z-12 overflow-hidden rounded-[10px]"
+    >
+        <!-- <Image src={ProfileImg} alt="profile image" class="h-[70hv]" /> -->
+        <img
+            src="../public/images/IMG_2406.png"
+            alt=""
+            class="h-[75vh] rounded-[10px] hover:scale-[1.03] transition-transform duration-300"
+        />
+    </div>
+    <div
+        class="next absolute bottom-10 left-1/2 transform -translate-x-1/2 will-change-transform"
+    >
+        <a id="next" class="text cursor-pointer">[ читати далі ]</a>
     </div>
 </div>
 
-<script is:inline>
-    const el = document.getElementById("second");
+<script>
+    const el = document.getElementById("second") as HTMLHtmlElement;
 
     const observer = new IntersectionObserver(
         ([entry]) => {
@@ -28,3 +42,52 @@ import Button from "./Button.astro";
 
     observer.observe(el);
 </script>
+
+<script>
+    const scrollToElement = (element: HTMLElement, duration = 600) => {
+        const targetY =
+            element.getBoundingClientRect().top + window.pageYOffset;
+        const startY = window.pageYOffset;
+        const distance = targetY - startY;
+        const startTime = performance.now();
+
+        const step = (currentTime: number) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease = easeInOutQuad(progress);
+
+            window.scrollTo(0, startY + distance * ease);
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            }
+        };
+
+        requestAnimationFrame(step);
+    };
+
+    const easeInOutQuad = (t: number) =>
+        t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+
+    const about = document.getElementById("about")!;
+    document.querySelector(".next")!.addEventListener("click", () => {
+        scrollToElement(about, 500);
+    });
+</script>
+
+<script>
+    window.addEventListener("scroll", () => {
+        const next = document.querySelector(".next") as HTMLHtmlElement;
+        const rect = next!.getBoundingClientRect();
+
+        const start = window.innerHeight - next.clientHeight - 50;
+        const end = window.innerHeight / 2;
+
+        let progress = (rect.top - end) / (start - end);
+        const clamped = Math.min(Math.max(progress, 0), 1);
+
+        next!.style.transform = `translateY(${(1 - clamped) * 80}px)`;
+    });
+</script>
+
+<script></script>

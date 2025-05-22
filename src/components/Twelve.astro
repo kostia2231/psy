@@ -1,37 +1,60 @@
 <div class="h-full pink sticky top-0 z-28">
-    <div class="h-fit gray p-10 flex flex-col gap-5 rounded_top">
+    <div class="h-fit gray p-10 flex flex-col gap-5 rounded_top princ">
         <div class="h-[2px] bg-white"></div>
         <div class="grid grid-cols-2">
             <div class="price">1.</div>
-            <div class="text">
-                <div class="font-medium">Безпечний простір — це основа.</div>
-                Моє завдання як терапевта створити атмосверу, де можна бути собою,
-                говорити про важке, соромне, заплутане й отримати прийняття, а не
-                оцінку.
+            <div class="">
+                <p class="text_md">Безпечний простір — це основа.</p>
+                <p class="text">
+                    Моє завдання як терапевта створити атмосверу, де можна бути
+                    собою, говорити про важке, соромне, заплутане й отримати
+                    прийняття, а не оцінку.
+                </p>
             </div>
         </div>
 
         <div class="h-[2px] bg-white"></div>
         <div class="grid grid-cols-2">
             <div class="price">2.</div>
-            <div class="text">
-                <div class="font-medium">Індивідуальний підхід.</div>
-
-                Завдяки освіті в гештальт-підході я вмію бачити унікальність
-                кожної людини, її ритм, стиль контакту, спосіб бути в стосунках.
-                Я не працюю “по схемі”, для мене важливо підлаштовувати роботу
-                під конкретну людину, її потреби й темп.
+            <div>
+                <p class="text_md">Індивідуальний підхід.</p>
+                <p class="text">
+                    Завдяки освіті в гештальт-підході я вмію бачити унікальність
+                    кожної людини, її ритм, стиль контакту, спосіб бути в
+                    стосунках. Я не працюю “по схемі”, для мене важливо
+                    підлаштовувати роботу під конкретну людину, її потреби й
+                    темп.
+                </p>
             </div>
         </div>
 
         <div class="h-[2px] bg-white"></div>
         <div class="grid grid-cols-2">
             <div class="price">3.</div>
-            <div class="text">
-                <div class="font-medium">Жива присутність і підтримка.</div>
-                Я поруч — у діалозі, у відгуку, в процесі. Вірю, що саме через контакт
-                і теплу терапевтичну взаємодію народжуються зміни.
+            <div>
+                <p class="text_md">Жива присутність і підтримка.</p>
+                <p class="text">
+                    Я поруч — у діалозі, у відгуку, в процесі. Вірю, що саме
+                    через контакт і теплу терапевтичну взаємодію народжуються
+                    зміни.
+                </p>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    window.addEventListener("scroll", () => {
+        const princ = document.querySelector(".princ") as HTMLHtmlElement;
+        const rect = princ!.getBoundingClientRect();
+
+        const windowHeight = window.innerHeight;
+        const start = windowHeight * 0.8;
+        const end = windowHeight * 0.3;
+
+        const progress = (start - rect.top) / (start - end);
+        const clamped = Math.min(Math.max(progress, 0), 1);
+
+        princ!.style.transform = `translateY(${(1 - clamped) * -160}px)`;
+    });
+</script>

@@ -1,7 +1,28 @@
 <div>
     <div
-        class="p-5 bg-[rgba(31,31,31,1)] w-fit text-button rounded_small cursor-pointer hover:bg-gray-100 transition-all duration-200 ease-in"
+        class="cstmButton p-5 bg-[rgba(31,31,31,1)] w-fit text-button rounded_small cursor-pointer hover:text-[rgba(41,37,36,1)] text-white transition-all duration-100 ease-in-out"
     >
         ЗАПИСАТИСЯ НА КОНСУЛЬТАЦІЮ
     </div>
 </div>
+
+<script is:inline>
+    window.addEventListener("DOMContentLoaded", () => {
+        const btnColors = ["rgba(229,226,141,1)", "rgba(245,195,196,1)"];
+        const btns = document.querySelectorAll(".cstmButton");
+        btns.forEach((btn) => {
+            if (btn) {
+                btn.addEventListener("mouseenter", () => {
+                    console.log("en");
+                    const randomColor =
+                        btnColors[Math.floor(Math.random() * btnColors.length)];
+                    btn.style.backgroundColor = randomColor;
+                });
+
+                btn.addEventListener("mouseleave", () => {
+                    btn.style.backgroundColor = "rgba(31,31,31,1)";
+                });
+            }
+        });
+    });
+</script>

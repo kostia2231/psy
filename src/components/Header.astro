@@ -6,19 +6,29 @@
         <div class="max-w-screen-xl mx-auto px-4">
             <div class="text overflow-x-auto">
                 <div class="flex justify-center gap-5 flex-wrap">
-                    <a id="toAbout" class="whitespace-nowrap cursor-pointer"
+                    <a
+                        id="toAbout"
+                        class="whitespace-nowrap cursor-pointer header-link"
                         >Про мене</a
                     >
-                    <a id="toPrice" class="whitespace-nowrap cursor-pointer"
+                    <a
+                        id="toPrice"
+                        class="whitespace-nowrap cursor-pointer header-link"
                         >Умови</a
                     >
-                    <a id="toEducation" class="whitespace-nowrap cursor-pointer"
+                    <a
+                        id="toEducation"
+                        class="whitespace-nowrap cursor-pointer header-link"
                         >Освіта і підготовка</a
                     >
-                    <a id="toGroups" class="whitespace-nowrap cursor-pointer"
+                    <a
+                        id="toGroups"
+                        class="whitespace-nowrap cursor-pointer header-link"
                         >Групи і майстер-класи</a
                     >
-                    <a id="toContacts" class="whitespace-nowrap cursor-pointer"
+                    <a
+                        id="toContacts"
+                        class="whitespace-nowrap cursor-pointer header-link"
                         >Контакти</a
                     >
                 </div>
@@ -26,6 +36,27 @@
         </div>
     </div>
 </div>
+
+<script is:inline>
+    window.addEventListener("DOMContentLoaded", () => {
+        const colors = ["rgba(229,226,141,1)", "rgba(245,195,196,1)"];
+        const links = document.querySelectorAll(".header-link");
+        links.forEach((l) => {
+            if (l) {
+                l.addEventListener("mouseenter", () => {
+                    console.log("en");
+                    const randomColor =
+                        colors[Math.floor(Math.random() * colors.length)];
+                    l.style.color = randomColor;
+                });
+
+                l.addEventListener("mouseleave", () => {
+                    l.style.color = "rgba(31,31,31,1)";
+                });
+            }
+        });
+    });
+</script>
 
 <script is:inline>
     let lastScrollTop = 0;

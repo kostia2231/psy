@@ -64,3 +64,24 @@ import Footer from "../components/Footer.astro";
         elements.forEach((el) => observer.observe(el));
     });
 </script>
+
+<script>
+    window.addEventListener("scroll", () => {
+        const cardPrices = document.querySelectorAll(
+            ".slide-in",
+        ) as NodeListOf<HTMLElement>;
+
+        const windowHeight = window.innerHeight;
+        const start = windowHeight * 0.95;
+        const end = windowHeight * 0.7;
+
+        cardPrices.forEach((card) => {
+            const rect = card.getBoundingClientRect();
+            const progress = (start - rect.top) / (start - end);
+            const clamped = Math.min(Math.max(progress, 0), 1);
+
+            card.style.opacity = clamped.toString();
+            card.style.transform = `translateY(${(1 - clamped) * 40}px)`;
+        });
+    });
+</script>
