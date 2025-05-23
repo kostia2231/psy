@@ -1,14 +1,58 @@
 ---
 import { Image } from "astro:assets";
 import ProfileImg from "../assets/IMG_2406.png";
+import Button from "./Button.astro";
 ---
 
-<div class="h-[50vh] w-full flex flex-col relative yellow">
-    <div class="flex flex-col mt-auto w-fit gap-2.5 m-10 z-12">
+<div
+    id="main"
+    class="h-[50vh] w-full flex flex-col relative yellow main p-10 max-[600px]:p-5 max-[600px]:h-[100vh]"
+>
+    <div
+        class="flex flex-col mt-auto w-fit gap-2.5 z-1 max-[600px]:w-full max-[600px]:mt-0"
+    >
         <h1>Марія Пархоменко</h1>
-        <p class="text w-[70vh]">
+        <p class="text w-[50vw] max-[600px]:w-full mb-5">
             лікарка, сертифікована гештальт-терапевтка, ведуча терапевтичних
             груп
         </p>
+        <div class="min-[600px]:hidden">
+            <Button />
+        </div>
+        <div
+            class="transform overflow-hidden rounded-[10px] flex justify-center items-center w-full mt-5 min-[600px]:hidden"
+        >
+            <!-- <Image src={ProfileImg} alt="profile image" class="h-[70hv]" /> -->
+            <div class="mr-auto">
+                <img
+                    id="imageMainMobile"
+                    src="../public/images/IMG_2406.png"
+                    alt=""
+                    class="rounded-[10px] transition-transform duration-300"
+                />
+            </div>
+        </div>
     </div>
 </div>
+
+<script>
+    window.addEventListener("scroll", () => {
+        const image = document.getElementById("imageMainMobile");
+        if (!image) return;
+
+        const rect = image.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        const start = windowHeight * 0.7;
+        const end = windowHeight * 0.2;
+
+        let progress = (rect.top - end) / (start - end);
+        const clamped = Math.min(Math.max(progress, 0), 1);
+
+        const maxWidth = 100;
+        const minWidth = 35;
+
+        const newWidth = minWidth + (maxWidth - minWidth) * clamped;
+        image.style.width = `${newWidth}vh`;
+    });
+</script>

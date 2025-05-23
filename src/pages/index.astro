@@ -16,21 +16,31 @@ import Eleven from "../components/Eleven.astro";
 import Twelve from "../components/Twelve.astro";
 import Groups from "../components/Groups.astro";
 import Footer from "../components/Footer.astro";
+
+import ThirdTwo from "../components/ThirdTwo.astro";
+import SixthTwo from "../components/SixthTwo.astro";
+import NineTwo from "../components/NineTwo.astro";
+
+import HeaderMobile from "../components/mobile/HeaderMobile.astro";
 ---
 
 <Layout>
     <Header />
+    <HeaderMobile />
     <div class="flex flex-col">
         <First />
         <Second />
         <Third />
+        <ThirdTwo />
         <Fourth />
         <Price />
         <Fivth />
         <Sixth />
+        <SixthTwo />
         <Seventh />
         <Eight />
         <Nine />
+        <NineTwo />
         <Ten />
         <Eleven />
         <Twelve />
@@ -80,7 +90,7 @@ import Footer from "../components/Footer.astro";
             const progress = (start - rect.top) / (start - end);
             const clamped = Math.min(Math.max(progress, 0), 1);
 
-            card.style.opacity = clamped.toString();
+            card.style.opacity = (clamped + 0.5).toString();
             card.style.transform = `translateY(${(1 - clamped) * 40}px)`;
         });
     });

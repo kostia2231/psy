@@ -2,7 +2,7 @@
 import Button from "./Button.astro";
 ---
 
-<div id="contacts" class="h-full w-full sticky top-0 bg-white z-30">
+<div id="contacts" class="h-full w-full sticky top-0 bg-white z-40">
     <div
         class="absolute top-0 left-10 right-10 h-[2px] yellow z-10 transform -translate-y-1/2 rounded-full"
     >
@@ -28,7 +28,7 @@ import Button from "./Button.astro";
                 </div>
                 <div>
                     Карта сайту: <br />
-                    <a href="">Головна</a> | <a
+                    <a id="toMainFooter" class="cursor-pointer">Головна</a> | <a
                         id="toAboutFooter"
                         class="cursor-pointer">Про мене</a
                     > |
@@ -90,6 +90,13 @@ import Button from "./Button.astro";
         e.preventDefault();
         document.documentElement.classList.remove("visible");
         history.pushState(null, null, "#groups");
+        location.reload();
+    });
+
+    document.getElementById("toMainFooter").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.documentElement.classList.remove("visible");
+        history.pushState(null, null, "#main");
         location.reload();
     });
 

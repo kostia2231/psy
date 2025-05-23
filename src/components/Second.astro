@@ -3,14 +3,18 @@ import Button from "./Button.astro";
 ---
 
 <div id="second" class="h-fit yellow w-full">
-    <div class="bg-white h-[50vh] w-full flex flex-col rounded_top">
-        <div class="flex flex-col mb-auto mt-10 ml-10">
+    <div
+        class="bg-white h-[50vh] w-full flex flex-col rounded_top max-[600px]:h-fit"
+    >
+        <div
+            class="flex flex-col mb-auto mt-10 ml-10 max-[600px]:w-full max-[600px]:mx-auto max-[600px]:px-5 max-[600px]:mt-5 z-11 max-[600px]:hidden"
+        >
             <Button />
         </div>
     </div>
 
     <div
-        class="absolute right-10 bottom-10 transform z-12 overflow-hidden rounded-[10px]"
+        class="absolute right-10 bottom-10 transform z-12 overflow-hidden rounded-[10px] max-[600px]:hidden"
     >
         <!-- <Image src={ProfileImg} alt="profile image" class="h-[70hv]" /> -->
         <img

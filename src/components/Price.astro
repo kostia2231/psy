@@ -1,11 +1,13 @@
 <section
     id="price"
-    class="flex w-full min-h-[50vh] text-center sticky top-0 z-20 yellow"
+    class="flex w-full min-h-[50vh] text-center sticky top-0 z-20 yellow max-[600px]:flex-col max-[600px]:p-5 max-[600px]:pb-10 min-[600px]:rounded_top max-[600px]:gap-2.5"
 >
     <div
-        class="bg-white w-1/2 rounded_top flex flex-col justify-center items-center"
+        class="bg-white w-1/2 min-[600px]:rounded_top max-[600px]:rounded-[20px] flex flex-col justify-center items-center max-[600px]:w-full rounded_top"
     >
-        <div class="text gap-2.5 flex flex-col justify-center items-center">
+        <div
+            class="text gap-2.5 flex flex-col justify-center items-center max-[600px]:p-10"
+        >
             <div>
                 Тривалість консультації: <br />
                 (хвилин)
@@ -14,19 +16,26 @@
         </div>
     </div>
     <div
-        class="bg-white w-1/2 rounded_top flex flex-col justify-center items-center gap-2.5"
+        class="bg-white w-1/2 min-[600px]:rounded_top max-[600px]:rounded-[20px] flex flex-col justify-center items-center gap-2.5 max-[600px]:w-full rounded_top"
     >
-        <div class="text gap-2.5 flex flex-col justify-center items-center">
+        <div
+            class="text gap-2.5 flex flex-col justify-center items-center max-[600px]:p-10"
+        >
             <div>
                 Ціна: <br />
                 (євро)
             </div>
-            <div class="price">50</div>
+            <div class="price">50€</div>
         </div>
     </div>
     <div
-        class="absolute top-[10px] left-1/2 transform -translate-x-1/2 w-[2px] yellow z-10 rounded-b-full"
+        class="absolute top-[10px] left-1/2 transform -translate-x-1/2 w-[2px] yellow z-10 rounded-b-full max-[600px]:hidden"
         style="bottom: 40px;"
     >
     </div>
+
+    <!-- <div
+        class="absolute top-1/2 left-5 right-5 h-[2px] yellow z-10 transform -translate-y-1/2 rounded-full min-[600px]:hidden"
+    >
+    </div> -->
 </section>
