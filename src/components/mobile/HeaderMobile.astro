@@ -7,11 +7,11 @@
         <nav class="p-2.5 flex flex-col">
             <div class="flex flex-col justify-between h-[100dvh]">
                 <div class="flex flex-col gap-5 overflow-x-hidden">
-                    <h1>Про мене</h1>
-                    <h1>Умови</h1>
-                    <h1>Освіта і підготовка</h1>
-                    <h1>Групи і майстер-класи</h1>
-                    <h1>Контакти</h1>
+                    <h1 id="toAboutMobile">Про мене</h1>
+                    <h1 id="toPriceMobile">Умови</h1>
+                    <h1 id="toEducationMobile">Освіта і підготовка</h1>
+                    <h1 id="toGroupsMobile">Групи і майстер-класи</h1>
+                    <h1 id="toContactsMobile">Контакти</h1>
                 </div>
 
                 <div class="flex justify-between mb-10">
@@ -23,3 +23,89 @@
         </nav>
     </aside>
 </div>
+
+<script is:inline>
+    document.getElementById("toAboutMobile").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.documentElement.classList.remove("visible");
+        history.pushState(null, null, "#about");
+        location.reload();
+    });
+
+    document.getElementById("toPriceMobile").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.documentElement.classList.remove("visible");
+        history.pushState(null, null, "#price");
+        location.reload();
+    });
+
+    document
+        .getElementById("toEducationMobile")
+        .addEventListener("click", (e) => {
+            e.preventDefault();
+            document.documentElement.classList.remove("visible");
+            history.pushState(null, null, "#education");
+            location.reload();
+        });
+
+    document
+        .getElementById("toContactsMobile")
+        .addEventListener("click", (e) => {
+            e.preventDefault();
+            document.documentElement.classList.remove("visible");
+            history.pushState(null, null, "#contacts");
+            location.reload();
+        });
+
+    document.getElementById("toGroupsMobile").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.documentElement.classList.remove("visible");
+        history.pushState(null, null, "#groups");
+        location.reload();
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+        const hash = window.location.hash;
+
+        document.documentElement.classList.add("visible");
+        if (hash === "#about") {
+            const target = document.getElementById("about");
+            if (target) {
+                target.scrollIntoView({ behavior: "instant", block: "start" });
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+
+        if (hash === "#price") {
+            const target = document.getElementById("price");
+            if (target) {
+                target.scrollIntoView({ behavior: "instant", block: "start" });
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+
+        if (hash === "#education") {
+            const target = document.getElementById("education");
+            if (target) {
+                target.scrollIntoView({ behavior: "instant", block: "start" });
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+
+        if (hash === "#contacts") {
+            const target = document.getElementById("contacts");
+            if (target) {
+                target.scrollIntoView({ behavior: "instant", block: "start" });
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+
+        if (hash === "#groups") {
+            const target = document.getElementById("groups");
+            if (target) {
+                target.scrollIntoView({ behavior: "instant", block: "start" });
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+    });
+</script>
