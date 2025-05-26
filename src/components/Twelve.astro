@@ -1,6 +1,6 @@
 <div class="h-full pink top-0 z-30 min-[600px]:sticky">
     <div
-        class="h-fit gray p-10 flex flex-col gap-5 rounded_top princ max-[600px]:px-5 max-[600px]:py-10 max-[600px]:rounded-[20px] max-[600px]:mb-10"
+        class="h-fit gray p-10 flex flex-col gap-5 rounded_top princ max-[600px]:px-5 max-[600px]:py-10"
     >
         <div class="h-[2px] bg-white"></div>
         <div class="grid grid-cols-2">
@@ -47,16 +47,18 @@
 
 <script>
     window.addEventListener("scroll", () => {
-        const princ = document.querySelector(".princ") as HTMLHtmlElement;
-        const rect = princ!.getBoundingClientRect();
+        if (window.innerWidth >= 600) {
+            const princ = document.querySelector(".princ") as HTMLHtmlElement;
+            const rect = princ!.getBoundingClientRect();
 
-        const windowHeight = window.innerHeight;
-        const start = windowHeight * 0.8;
-        const end = windowHeight * 0.3;
+            const windowHeight = window.innerHeight;
+            const start = windowHeight * 0.8;
+            const end = windowHeight * 0.3;
 
-        const progress = (start - rect.top) / (start - end);
-        const clamped = Math.min(Math.max(progress, 0), 1);
+            const progress = (start - rect.top) / (start - end);
+            const clamped = Math.min(Math.max(progress, 0), 1);
 
-        princ!.style.transform = `translate3d(0, ${(1 - clamped) * -160}px, 0)`;
+            princ!.style.transform = `translate3d(0, ${(1 - clamped) * -160}px, 0)`;
+        }
     });
 </script>
