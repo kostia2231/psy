@@ -12,18 +12,55 @@
     height: 40px;
     background-color: rgba(41, 37, 36, 1);
     border-radius: 99999px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
 }
 
 .hb-menu {
     display: flex;
     flex-direction: column;
-
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 101;
-    cursor: pointer;
 }
+
+@keyframes press {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.85);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes pressOut {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.85);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.hb-menu input:checked {
+    transform: scale(1);
+    background-color: rgba(229, 226, 141, 1);
+    animation: press 0.2s ease;
+}
+
+.hb-menu input:not(:checked) {
+    animation: pressOut 0.25s ease;
+}
+/* .hb-menu:active input {
+    transform: scale(0.85);
+} */
 
 .hb-menu input {
     appearance: none;
@@ -40,7 +77,9 @@
     width: 100%;
     padding: 10px;
     z-index: 100;
-    background: rgba(243, 243, 238, 1);
+    background: rgba(243, 243, 238, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
