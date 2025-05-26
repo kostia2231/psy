@@ -92,7 +92,7 @@ import HeaderMobile from "../components/mobile/HeaderMobile.astro";
                 const progress = (start - rect.top) / (start - end);
                 const clamped = Math.min(Math.max(progress, 0), 1);
 
-                card.style.opacity = (clamped + 0.5).toString();
+                card.style.opacity = (clamped + 0.3).toString();
                 card.style.transform = `translate3d(0, ${(1 - clamped) * 40}px, 0)`;
             });
         });
