@@ -45,7 +45,7 @@
     /* translate: 100% 0;
     transition: translate 0.3s ease-in-out; */
     padding: 10px;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 1);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
@@ -170,8 +170,8 @@ h1 {
     }
 
     .text_md {
-        font-size: 22px;
-        line-height: 28px;
+        font-size: 16px;
+        line-height: 22px;
         font-weight: 600;
         letter-spacing: 0.04rem;
     }

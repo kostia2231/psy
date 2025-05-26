@@ -1,5 +1,5 @@
 <div
-    class="flex w-full min-h-[50vh] top-45 z-25 px-5 pb-10 gap-[2px] max-[600px]:flex-col min-[600px]:sticky pink max-[600px]:gap-2.5"
+    class="flex w-full min-h-[50vh] top-45 z-25 px-5 max-[600px]:px-2.5 pb-10 gap-[2px] max-[600px]:flex-col min-[600px]:sticky min-[600px]:pink max-[600px]:gap-2.5"
 >
     <div
         class="bg-white w-1/2 rounded-[20px] flex flex-col items-center gap-2.5 card max-[600px]:w-full"
@@ -85,21 +85,30 @@
 
 <script>
     window.addEventListener("scroll", () => {
-        const card = document.querySelector(".card") as HTMLHtmlElement;
-        const card2 = document.querySelector(".card2") as HTMLHtmlElement;
-        const card3 = document.querySelector(".card3") as HTMLHtmlElement;
+        if (window.innerWidth >= 600) {
+            const card = document.querySelector(".card") as HTMLHtmlElement;
+            const card2 = document.querySelector(".card2") as HTMLHtmlElement;
+            const card3 = document.querySelector(".card3") as HTMLHtmlElement;
 
-        const rect = card!.getBoundingClientRect();
+            const rect = card!.getBoundingClientRect();
+            const rect2 = card2!.getBoundingClientRect();
+            const rect3 = card3!.getBoundingClientRect();
 
-        const windowHeight = window.innerHeight;
-        const start = windowHeight * 0.8;
-        const end = windowHeight * 0.3;
+            const windowHeight = window.innerHeight;
+            const start = windowHeight * 0.8;
+            const end = windowHeight * 0.3;
 
-        const progress = (start - rect.top) / (start - end);
-        const clamped = Math.min(Math.max(progress, 0), 1);
+            const progress = (start - rect.top) / (start - end);
+            const progress2 = (start - rect2.top) / (start - end);
+            const progress3 = (start - rect3.top) / (start - end);
 
-        card!.style.transform = `translate3d(0, ${(1 - clamped) * -160}px, 0)`;
-        card2!.style.transform = `translate3d(0, ${(1 - clamped) * -100}px, 0)`;
-        card3!.style.transform = `translate3d(0, ${(1 - clamped) * -40}px, 0)`;
+            const clamped = Math.min(Math.max(progress, 0), 1);
+            const clamped2 = Math.min(Math.max(progress2, 0), 1);
+            const clamped3 = Math.min(Math.max(progress3, 0), 1);
+
+            card!.style.transform = `translate3d(0, ${(1 - clamped) * -160}px, 0)`;
+            card2!.style.transform = `translate3d(0, ${(1 - clamped2) * -100}px, 0)`;
+            card3!.style.transform = `translate3d(0, ${(1 - clamped3) * -40}px, 0)`;
+        }
     });
 </script>
