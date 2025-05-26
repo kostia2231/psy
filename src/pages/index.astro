@@ -98,3 +98,41 @@ import HeaderMobile from "../components/mobile/HeaderMobile.astro";
         });
     }
 </script>
+
+<script>
+    const lines = document.querySelectorAll(".line");
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const target = entry.target as HTMLElement;
+                    target.classList.add("visible");
+                    target.classList.remove("hidden");
+                    observer.unobserve(target);
+                }
+            });
+        },
+        { threshold: 0.7 },
+    );
+
+    lines.forEach((line) => observer.observe(line));
+
+    const verticalLines = document.querySelectorAll(".line-vertical");
+
+    const observer2 = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const el = entry.target as HTMLElement;
+                    el.classList.add("visible");
+                    el.classList.remove("hidden");
+                    observer2.unobserve(el);
+                }
+            });
+        },
+        { threshold: 1 },
+    );
+
+    verticalLines.forEach((line) => observer2.observe(line));
+</script>

@@ -204,6 +204,26 @@ h1 {
     }
 }
 
+.line {
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 1s ease;
+}
+
+.line.visible {
+    transform: scaleX(1);
+}
+
+.line-vertical {
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 1s ease;
+}
+
+.line-vertical.visible {
+    transform: scaleY(1);
+}
+
 /* .fade-in.visible {
     opacity: 1;
     transform: translateY(0px);
