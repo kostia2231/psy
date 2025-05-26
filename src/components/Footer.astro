@@ -18,15 +18,17 @@ import Button from "./Button.astro";
 
     <div class="h-fit bg-white">
         <footer
-            class="h-[50vh] yellow rounded_top p-10 flex flex-col justify-between z-30"
+            class="h-[50vh] yellow rounded_top p-10 max-[600px]:p-5 flex flex-col justify-between z-30"
         >
-            <div class="text_small grid grid-cols-2 gap-20">
+            <div
+                class="text_small grid grid-cols-2 gap-20 max-[600px]:grid-cols-1"
+            >
                 <div>
                     Марія Пархоменко <br /> лікарка, гештальт-консультантка, ведуча
                     терапевтичних груп. <br /><br />©2025. Усі права захищені. <br
                     /> Site by: c8.studio
                 </div>
-                <div>
+                <div class="max-[600px]:hidden">
                     Карта сайту: <br />
                     <a id="toMainFooter" class="cursor-pointer">Головна</a> | <a
                         id="toAboutFooter"
@@ -44,9 +46,8 @@ import Button from "./Button.astro";
             </div>
             <div class="text flex justify-between">
                 <div>
-                    Для зв'язку можете написати мені на [ пошту ] або [ telegram
-                    ], <br />а також знаходь мене в instagram по ніку [
-                    @parhomak ]
+                    Для зв'язку можете написати мені на [пошту] або [telegram] , <br
+                    />а також знаходь мене в instagram по ніку [@parhomak]
                 </div>
             </div>
         </footer>
