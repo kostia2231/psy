@@ -29,6 +29,10 @@
 </div>
 
 <script is:inline>
+    if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+    }
+
     const instantScrollTo = (id) => {
         const target = document.getElementById(id);
         if (!target || !window.lenisInstance) return;
