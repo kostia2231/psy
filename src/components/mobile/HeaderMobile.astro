@@ -29,18 +29,14 @@
 </div>
 
 <script is:inline>
-    const instantScrollTo = (id, offset = 0) => {
+    const instantScrollTo = (id) => {
         const target = document.getElementById(id);
-        if (!target) return;
-
-        lenisInstance.scrollTo(target, {
-            offset: -offset,
-            immediate: true, // без анимации, мгновенно
-        });
+        if (!target || !window.lenisInstance) return;
+        window.lenisInstance.scrollTo(target, { immediate: true });
     };
 
     const scrollToSection = (id) => {
-        instantScrollTo(id, 80);
+        instantScrollTo(id);
         setTimeout(() => {
             document.documentElement.classList.add("visible");
             history.replaceState(null, null, window.location.pathname);
