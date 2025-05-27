@@ -37,6 +37,8 @@
         const target = document.getElementById(id);
         if (!target || !window.lenisInstance) return;
         window.lenisInstance.scrollTo(target, { immediate: true });
+        //tut
+        lenisInstance.raf(performance.now());
     };
 
     const scrollToSection = (id) => {

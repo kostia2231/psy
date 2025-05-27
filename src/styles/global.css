@@ -210,6 +210,7 @@ h1 {
 .text-anim {
     transform: translateY(100%);
     will-change: transform;
+    padding-top: 0.02em;
 }
 
 @media (max-width: 600px) {
