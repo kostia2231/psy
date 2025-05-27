@@ -29,87 +29,59 @@
 </div>
 
 <script is:inline>
-    document.getElementById("toAboutMobile").addEventListener("click", (e) => {
-        e.preventDefault();
-        document.documentElement.classList.remove("visible");
-        history.pushState(null, null, "#about");
-        location.reload();
-    });
+    const lenis = new Lenis({ duration: 1.2, easing: (t) => t, smooth: true });
 
-    document.getElementById("toPriceMobile").addEventListener("click", (e) => {
-        e.preventDefault();
-        document.documentElement.classList.remove("visible");
-        history.pushState(null, null, "#price");
-        location.reload();
-    });
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
 
-    document
-        .getElementById("toEducationMobile")
-        .addEventListener("click", (e) => {
+    const instantScrollTo = (id, offset = 0) => {
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        const top =
+            target.getBoundingClientRect().top + window.scrollY - offset;
+        lenis.stop();
+        window.scrollTo(0, top);
+    };
+
+    const scrollToSection = (id) => {
+        instantScrollTo(id, 80);
+        setTimeout(() => {
+            document.documentElement.classList.add("visible");
+            history.replaceState(null, null, window.location.pathname);
+        }, 100);
+    };
+
+    const closeBurger = () => {
+        const burger = document.querySelector(".hb-menu input");
+        if (burger) burger.checked = false;
+    };
+
+    const addMenuClickHandler = (buttonId, sectionId) => {
+        document.getElementById(buttonId)?.addEventListener("click", (e) => {
             e.preventDefault();
             document.documentElement.classList.remove("visible");
-            history.pushState(null, null, "#education");
-            location.reload();
+            closeBurger();
+            scrollToSection(sectionId);
         });
+    };
 
-    document
-        .getElementById("toContactsMobile")
-        .addEventListener("click", (e) => {
-            e.preventDefault();
-            document.documentElement.classList.remove("visible");
-            history.pushState(null, null, "#contacts");
-            location.reload();
-        });
-
-    document.getElementById("toGroupsMobile").addEventListener("click", (e) => {
-        e.preventDefault();
-        document.documentElement.classList.remove("visible");
-        history.pushState(null, null, "#groups");
-        location.reload();
-    });
+    addMenuClickHandler("toAboutMobile", "about");
+    addMenuClickHandler("toPriceMobile", "price");
+    addMenuClickHandler("toEducationMobile", "education");
+    addMenuClickHandler("toGroupsMobile", "groups");
+    addMenuClickHandler("toContactsMobile", "contacts");
 
     window.addEventListener("DOMContentLoaded", () => {
         const hash = window.location.hash;
-
+        if (hash) {
+            const id = hash.substring(1);
+            instantScrollTo(id, 80);
+            history.replaceState(null, null, window.location.pathname);
+        }
         document.documentElement.classList.add("visible");
-        if (hash === "#about") {
-            const target = document.getElementById("about");
-            if (target) {
-                target.scrollIntoView({ behavior: "instant", block: "start" });
-                history.replaceState(null, null, window.location.pathname);
-            }
-        }
-
-        if (hash === "#price") {
-            const target = document.getElementById("price");
-            if (target) {
-                target.scrollIntoView({ behavior: "instant", block: "start" });
-                history.replaceState(null, null, window.location.pathname);
-            }
-        }
-
-        if (hash === "#education") {
-            const target = document.getElementById("education");
-            if (target) {
-                target.scrollIntoView({ behavior: "instant", block: "start" });
-                history.replaceState(null, null, window.location.pathname);
-            }
-        }
-
-        if (hash === "#contacts") {
-            const target = document.getElementById("contacts");
-            if (target) {
-                target.scrollIntoView({ behavior: "instant", block: "start" });
-                history.replaceState(null, null, window.location.pathname);
-            }
-        }
-
-        if (hash === "#groups") {
-            const target = document.getElementById("groups");
-            if (target) {
-                target.scrollIntoView({ behavior: "instant", block: "start" });
-                history.replaceState(null, null, window.location.pathname);
-            }
-        }
     });
 </script>
