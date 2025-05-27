@@ -27,34 +27,32 @@ import Button from "./Button.astro";
             <!-- <Image src={ProfileImg} alt="profile image" class="h-[70hv]" /> -->
             <div class="mr-auto">
                 <img
-                    id=""
+                    id="imageMainMobile"
                     src="../images/IMG_2406.png"
                     alt=""
-                    class="rounded-[10px] transition-transform duration-300"
+                    class="w-full object-cover rounded-[10px] transition-transform duration-500 ease-out will-change-transform origin-top-left"
+                    style="transform: scale(1);"
                 />
             </div>
         </div>
     </div>
 </div>
 
-<script>
+<script is:inline>
     window.addEventListener("scroll", () => {
         const image = document.getElementById("imageMainMobile");
         if (!image) return;
 
-        const rect = image.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
+        const scrollY = window.scrollY;
+        const maxScroll = 300;
 
-        const start = windowHeight * 0.7;
-        const end = windowHeight * 0.2;
+        if (scrollY === 0) {
+            image.style.transform = "scale(1)";
+            return;
+        }
 
-        let progress = (rect.top - end) / (start - end);
-        const clamped = Math.min(Math.max(progress, 0), 1);
-
-        const maxWidth = 100;
-        const minWidth = 35;
-
-        const newWidth = minWidth + (maxWidth - minWidth) * clamped;
-        image.style.width = `${newWidth}vh`;
+        // const clampedScroll = Math.min(scrollY, maxScroll);
+        const scale = 1 - 0.1;
+        image.style.transform = `scale(${scale})`;
     });
 </script>
