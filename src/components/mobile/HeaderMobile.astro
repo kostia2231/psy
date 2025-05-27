@@ -7,15 +7,13 @@
         <nav class="p-2.5 flex flex-col">
             <div class="flex flex-col justify-between h-[100dvh]">
                 <div class="flex flex-col gap-5 overflow-x-hidden">
-                    <h1 id="toAboutMobile" class="w-fit">Про мене</h1>
-                    <h1 id="toPriceMobile" class="w-fit">Умови</h1>
-                    <h1 id="toEducationMobile" class="w-fit">
-                        Освіта і підготовка
-                    </h1>
-                    <h1 id="toGroupsMobile" class="w-fit">
+                    <a href="#about" class="w-fit">Про мене</a>
+                    <a href="#price" class="w-fit">Умови</a>
+                    <a href="#education" class="w-fit"> Освіта і підготовка </a>
+                    <a href="#groups" id="" class="w-fit">
                         Групи і майстер-класи
-                    </h1>
-                    <h1 id="toContactsMobile" class="w-fit">Контакти</h1>
+                    </a>
+                    <a href="#contacts" class="w-fit">Контакти</a>
                 </div>
 
                 <div class="flex justify-between mb-10">
@@ -28,7 +26,7 @@
     </aside>
 </div>
 
-<script is:inline>
+<!-- <script is:inline>
     document.getElementById("toAboutMobile").addEventListener("click", (e) => {
         e.preventDefault();
         document.documentElement.classList.remove("visible");
@@ -112,4 +110,4 @@
             }
         }
     });
-</script>
+</script> -->
