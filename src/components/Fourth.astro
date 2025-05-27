@@ -43,7 +43,8 @@
 </div>
 
 <script is:inline>
-    gsap.registerPlugin(ScrollTrigger, SplitText);
+    // gsap.registerPlugin(ScrollTrigger, SplitText);
+    CustomEase.create("myEase", "0.27, 0.51, 0.32, 0.99");
 
     window.addEventListener("load", () => {
         const containers = document.querySelectorAll(
@@ -75,24 +76,22 @@
             });
         });
 
-        // начальное состояние
         gsap.set(allLines, { y: "100%" });
 
-        // единая анимация всех строк
         gsap.to(allLines, {
             y: "0%",
-            duration: 1,
-            stagger: 0.1,
-            ease: "power4.out",
+            duration: 0.8,
+            stagger: 0.06,
+            ease: "myEase",
+            delay: 0.3,
             scrollTrigger: {
-                trigger: containers[0], // или какой-то родитель контейнеров
+                trigger: containers[0],
                 start: "top 95%",
                 once: true,
                 // markers: true,
             },
         });
 
-        // опционально: очистка SplitText при уходе
         // window.addEventListener("beforeunload", () => {
         //     splitInstances.forEach((split) => split.revert());
         // });

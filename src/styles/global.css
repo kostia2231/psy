@@ -205,15 +205,22 @@ h1 {
 .rev {
     transform: translateY(100%);
     will-change: transform;
+    perspective: 1000px;
 }
 
 .text-anim {
     transform: translateY(100%);
     will-change: transform;
-    padding-top: 0.02em;
+    /* padding-top: 0.02em; */
+    perspective: 1000px;
 }
 
 @media (max-width: 600px) {
+    .text-anim {
+        padding-top: 0.02em;
+        padding-bottom: 0.02em;
+    }
+
     h1 {
         letter-spacing: 0.04rem;
         font-size: 40px;

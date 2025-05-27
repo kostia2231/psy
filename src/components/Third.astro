@@ -12,7 +12,8 @@
 </section>
 
 <script is:inline>
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase);
+    CustomEase.create("myEase", "0.27, 0.51, 0.32, 0.99");
 
     window.addEventListener("load", () => {
         const containers = document.querySelectorAll(
@@ -52,10 +53,10 @@
 
             gsap.to(lines, {
                 y: "0%",
-                duration: 0.7,
-                stagger: 0.1,
-                ease: "power4.out",
-                delay: 0.5,
+                duration: 0.8,
+                stagger: 0.06,
+                ease: "myEase",
+                delay: 0.3,
                 scrollTrigger: {
                     trigger: container,
                     start: "top 95%",
