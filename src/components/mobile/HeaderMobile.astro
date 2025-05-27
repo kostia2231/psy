@@ -29,22 +29,14 @@
 </div>
 
 <script is:inline>
-    const lenis = new Lenis({ duration: 1.2, easing: (t) => t, smooth: true });
-
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
     const instantScrollTo = (id, offset = 0) => {
         const target = document.getElementById(id);
         if (!target) return;
 
-        const top =
-            target.getBoundingClientRect().top + window.scrollY - offset;
-        lenis.stop();
-        window.scrollTo(0, top);
+        lenisInstance.scrollTo(target, {
+            offset: -offset,
+            immediate: true, // без анимации, мгновенно
+        });
     };
 
     const scrollToSection = (id) => {
