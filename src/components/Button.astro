@@ -1,4 +1,4 @@
-<div>
+<div class="text-animate-container">
     <div
         class="cstmButton p-5 bg-[rgba(31,31,31,1)] w-fit text-button rounded_small cursor-pointer hover:text-[rgba(41,37,36,1)] text-white transition-all duration-100 ease-in-out"
     >
@@ -13,7 +13,6 @@
         btns.forEach((btn) => {
             if (btn) {
                 btn.addEventListener("mouseenter", () => {
-                    console.log("en");
                     const randomColor =
                         btnColors[Math.floor(Math.random() * btnColors.length)];
                     btn.style.backgroundColor = randomColor;

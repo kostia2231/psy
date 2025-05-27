@@ -6,6 +6,20 @@
         <link rel="icon" href="../../favicon/favicon.ico" type="image/x-icon" />
         <script is:inline src="https://unpkg.com/lenis@1.3.1/dist/lenis.min.js"
         ></script>
+
+        <script
+            is:inline
+            src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        ></script>
+        <script
+            is:inline
+            src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+        ></script>
+        <script
+            is:inline
+            src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"
+        ></script>
+
         <title>Марія Пархоменко</title>
     </head>
     <body>
@@ -16,7 +30,7 @@
 <script>
     if (typeof (window as any).Lenis === "function") {
         const lenis = new (window as any).Lenis({
-            duration: 0.5,
+            duration: 0.6,
             direction: "vertical",
             smooth: true,
             smoothTouch: false,

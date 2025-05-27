@@ -10,3 +10,60 @@
         </h1>
     </div>
 </section>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    window.addEventListener("load", () => {
+        const containers = document.querySelectorAll(
+            "[data-copy-wrapper], .text-animate-container",
+        );
+
+        containers.forEach((container) => {
+            let elements = container.hasAttribute("data-copy-wrapper")
+                ? Array.from(container.children)
+                : [container];
+
+            let splitInstances = [];
+            let lines = [];
+
+            elements.forEach((el) => {
+                const split = new SplitText(el, {
+                    type: "lines",
+                    linesClass: "text-anim++",
+                    mask: "lines",
+                });
+                splitInstances.push(split);
+                lines.push(...split.lines);
+
+                const computedStyle = window.getComputedStyle(el);
+                const textIndent = computedStyle.textIndent;
+                if (
+                    textIndent &&
+                    textIndent === "0px" &&
+                    split.lines.length > 0
+                ) {
+                    split.lines[0].style.paddingLeft = textIndent;
+                    el.style.textIndent = "0";
+                }
+            });
+
+            gsap.set(lines, { y: "100%" });
+
+            gsap.to(lines, {
+                y: "0%",
+                duration: 0.7,
+                stagger: 0.1,
+                ease: "power4.out",
+                delay: 0.5,
+                scrollTrigger: {
+                    trigger: container,
+                    start: "top 95%",
+                    once: true,
+                },
+            });
+
+            // splitInstances.forEach((split) => split.revert());
+        });
+    });
+</script>

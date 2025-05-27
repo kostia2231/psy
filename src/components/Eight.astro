@@ -1,3 +1,7 @@
+---
+
+---
+
 <div
     class="flex w-full min-h-[50vh] z-25 px-5 max-[600px]:px-2.5 pb-10 gap-[2px] max-[600px]:flex-col min-[600px]:top-45 sticky pink max-[600px]:gap-2.5"
 >
@@ -7,16 +11,18 @@
         <div class="text p-5 text_small flex flex-col gap-10 w-full">
             <div class="flex justify-between">
                 <div>
-                    <div class="uppercase">Гештальт-терапія</div>
-                    <div>Ступінь 1</div>
+                    <div class="uppercase text-animate-container-cards">
+                        Гештальт-терапія
+                    </div>
+                    <div class="text-animate-container-cards">Ступінь 1</div>
                 </div>
-                <div class="">*годин</div>
+                <div class="text-animate-container-cards">*годин</div>
             </div>
 
             <div class="flex flex-col gap-5">
-                <div class="price text-center">280</div>
+                <div class="price text-center text-animate-container">280</div>
                 <div class="h-[2px] gray mt-5 line"></div>
-                <div class="text">
+                <div class="text text-animate-container-cards">
                     Знайомство з базовими принципами підходу, перші практичні
                     навички, які вже тоді допомагали мені підтримувати людей в
                     особистісному розвитку.
@@ -31,16 +37,20 @@
         <div class="text p-5 text_small flex flex-col gap-10 w-full">
             <div class="flex justify-between">
                 <div>
-                    <div class="uppercase">Гештальт-терапія</div>
-                    <div>Ступінь 2</div>
+                    <div class="uppercase text-animate-container-cards">
+                        Гештальт-терапія
+                    </div>
+                    <div class="text-animate-container-cards">Ступінь 2</div>
                 </div>
-                <div class="">*годин</div>
+                <div class="text-animate-container-cards">*годин</div>
             </div>
 
             <div class="flex flex-col gap-5">
-                <div class="price text-center">720</div>
+                <div class="price text-center text-animate-container-cards">
+                    720
+                </div>
                 <div class="h-[2px] gray mt-5 line"></div>
-                <div class="text">
+                <div class="text text-animate-container-cards">
                     Поглиблення теорії та багато практики. Цей етап став
                     справжнім переходом до професійної роботи з клієнтами.
                 </div>
@@ -54,16 +64,22 @@
         <div class="text p-5 text_small flex flex-col gap-10 w-full">
             <div class="flex justify-between">
                 <div>
-                    <div class="uppercase">Спеціалізація</div>
-                    <div>"Клінічний підхід у гештальт-терапії"</div>
+                    <div class="uppercase text-animate-container-cards">
+                        Спеціалізація
+                    </div>
+                    <div class="text-animate-container-cards">
+                        "Клінічний підхід у гештальт-терапії"
+                    </div>
                 </div>
-                <div class="">*годин</div>
+                <div class="text-animate-container-cards">*годин</div>
             </div>
 
             <div class="flex flex-col gap-5">
-                <div class="price text-center">280</div>
+                <div class="price text-center text-animate-container-cards">
+                    280
+                </div>
                 <div class="h-[2px] gray mt-5 line"></div>
-                <div class="text">
+                <div class="text text-animate-container-cards">
                     Навчання роботі з більш складними запитами, психічними
                     станами та глибинними внутрішніми процесами.
                 </div>
@@ -110,5 +126,62 @@
             card2!.style.transform = `translate3d(0, ${(1 - clamped2) * -100}px, 0)`;
             card3!.style.transform = `translate3d(0, ${(1 - clamped3) * -40}px, 0)`;
         }
+    });
+</script>
+
+<script is:inline>
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    window.addEventListener("load", () => {
+        const containers = document.querySelectorAll(
+            ".text-animate-container-cards",
+        );
+        const allLines = [];
+        const splitInstances = [];
+
+        containers.forEach((container) => {
+            const children = container.hasAttribute("data-copy-wrapper")
+                ? Array.from(container.children)
+                : [container];
+
+            children.forEach((el) => {
+                const split = new SplitText(el, {
+                    type: "lines",
+                    linesClass: "text-anim++",
+                    mask: "lines",
+                });
+
+                splitInstances.push(split);
+                allLines.push(...split.lines);
+
+                const textIndent = getComputedStyle(el).textIndent;
+                if (textIndent === "0px" && split.lines.length > 0) {
+                    split.lines[0].style.paddingLeft = textIndent;
+                    el.style.textIndent = "0";
+                }
+            });
+        });
+
+        // начальное состояние
+        gsap.set(allLines, { y: "100%" });
+
+        // единая анимация всех строк
+        gsap.to(allLines, {
+            y: "0%",
+            duration: 1,
+            stagger: 0.1,
+            ease: "power4.out",
+            scrollTrigger: {
+                trigger: containers[0], // или какой-то родитель контейнеров
+                start: "top 95%",
+                once: true,
+                // markers: true,
+            },
+        });
+
+        // опционально: очистка SplitText при уходе
+        // window.addEventListener("beforeunload", () => {
+        //     splitInstances.forEach((split) => split.revert());
+        // });
     });
 </script>
