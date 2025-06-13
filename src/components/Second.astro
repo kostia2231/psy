@@ -70,6 +70,12 @@ import Button from "./Button.astro";
         requestAnimationFrame(step);
     };
 
+    const top = document.getElementById("main");
+    const up = document.getElementById("toUp");
+    up?.addEventListener("click", () => {
+        if (top) scrollToElement(top, 1500);
+    });
+
     const easeInOutQuad = (t: number) =>
         t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 

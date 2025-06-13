@@ -18,64 +18,80 @@
                     <h1 id="toContactsMobile" class="w-fit">Контакти</h1>
                 </div>
 
-                <div class="flex justify-between mb-10">
-                    <h1 class="w-fit">IG</h1>
-                    <h1 class="w-fit">TG</h1>
-                    <h1 class="w-fit">E-Mail</h1>
+                <div class="flex flex-col mb-10 text_small">
+                    <div class="">
+                        <p class="opacity-50">
+                            Марія Пархоменко
+                            <br />
+                            ©2025. Усі права захищені.
+                            <br />
+                            <br />
+                        </p>
+                        <div class="flex justify-between">
+                            <p class="w-fit text">Facebook</p>
+                            <p class="opacity-50 text">|</p>
+                            <p class="w-fit text">Telegram</p>
+                            <p class="opacity-50 text">|</p>
+
+                            <p class="w-fit text">Telegram-канал</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
+
+        <script is:inline>
+            if ("scrollRestoration" in history) {
+                history.scrollRestoration = "manual";
+            }
+
+            const instantScrollTo = (id) => {
+                const target = document.getElementById(id);
+                if (!target || !window.lenisInstance) return;
+                window.lenisInstance.scrollTo(target, { immediate: true });
+                //tut
+                lenisInstance.raf(performance.now());
+            };
+
+            const scrollToSection = (id) => {
+                instantScrollTo(id);
+                setTimeout(() => {
+                    document.documentElement.classList.add("visible");
+                    history.replaceState(null, null, window.location.pathname);
+                }, 100);
+            };
+
+            const closeBurger = () => {
+                const burger = document.querySelector(".hb-menu input");
+                if (burger) burger.checked = false;
+            };
+
+            const addMenuClickHandler = (buttonId, sectionId) => {
+                document
+                    .getElementById(buttonId)
+                    ?.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        document.documentElement.classList.remove("visible");
+                        closeBurger();
+                        scrollToSection(sectionId);
+                    });
+            };
+
+            addMenuClickHandler("toAboutMobile", "about");
+            addMenuClickHandler("toPriceMobile", "price");
+            addMenuClickHandler("toEducationMobile", "education");
+            addMenuClickHandler("toGroupsMobile", "groups");
+            addMenuClickHandler("toContactsMobile", "contacts");
+
+            window.addEventListener("DOMContentLoaded", () => {
+                const hash = window.location.hash;
+                if (hash) {
+                    const id = hash.substring(1);
+                    instantScrollTo(id, 80);
+                    history.replaceState(null, null, window.location.pathname);
+                }
+                document.documentElement.classList.add("visible");
+            });
+        </script>
     </aside>
 </div>
-
-<script is:inline>
-    if ("scrollRestoration" in history) {
-        history.scrollRestoration = "manual";
-    }
-
-    const instantScrollTo = (id) => {
-        const target = document.getElementById(id);
-        if (!target || !window.lenisInstance) return;
-        window.lenisInstance.scrollTo(target, { immediate: true });
-        //tut
-        lenisInstance.raf(performance.now());
-    };
-
-    const scrollToSection = (id) => {
-        instantScrollTo(id);
-        setTimeout(() => {
-            document.documentElement.classList.add("visible");
-            history.replaceState(null, null, window.location.pathname);
-        }, 100);
-    };
-
-    const closeBurger = () => {
-        const burger = document.querySelector(".hb-menu input");
-        if (burger) burger.checked = false;
-    };
-
-    const addMenuClickHandler = (buttonId, sectionId) => {
-        document.getElementById(buttonId)?.addEventListener("click", (e) => {
-            e.preventDefault();
-            document.documentElement.classList.remove("visible");
-            closeBurger();
-            scrollToSection(sectionId);
-        });
-    };
-
-    addMenuClickHandler("toAboutMobile", "about");
-    addMenuClickHandler("toPriceMobile", "price");
-    addMenuClickHandler("toEducationMobile", "education");
-    addMenuClickHandler("toGroupsMobile", "groups");
-    addMenuClickHandler("toContactsMobile", "contacts");
-
-    window.addEventListener("DOMContentLoaded", () => {
-        const hash = window.location.hash;
-        if (hash) {
-            const id = hash.substring(1);
-            instantScrollTo(id, 80);
-            history.replaceState(null, null, window.location.pathname);
-        }
-        document.documentElement.classList.add("visible");
-    });
-</script>
