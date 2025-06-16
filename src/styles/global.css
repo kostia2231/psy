@@ -230,14 +230,20 @@ h1 {
         line-height: 28px;
     }
 
+    .title_mobile {
+        font-size: 34px;
+        font-weight: 400;
+        line-height: 34px;
+    }
+
     .text {
-        font-size: 16px;
+        font-size: 17px;
         line-height: 22px;
         font-weight: 400;
     }
 
     .text_md {
-        font-size: 16px;
+        font-size: 17px;
         line-height: 22px;
         font-weight: 600;
     }
