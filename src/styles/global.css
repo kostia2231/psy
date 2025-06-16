@@ -1,10 +1,18 @@
 @import "tailwindcss";
+@font-face {
+    font-family: "CoFo Sans";
+    src: url("/font/CoFoSans-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
 
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-    font-family: Helvetica, sans-serif;
+    font-family:
+        CoFo Sans,
+        sans-serif;
 }
 
 .hb-menu input {
@@ -142,35 +150,31 @@ html.visible {
 }
 
 .text {
-    font-size: 22px;
-    line-height: 28px;
+    font-size: 24px;
+    line-height: 32px;
     font-weight: 400;
-    letter-spacing: 0.04rem;
     color: rgb(41, 37, 36);
 }
 
 .text_md {
-    font-size: 22px;
-    line-height: 28px;
-    font-weight: 600;
-    letter-spacing: 0.04rem;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 400;
     color: rgb(41, 37, 36);
 }
 
 .text-button {
-    font-size: 22px;
-    line-height: 28px;
+    font-size: 24px;
+    line-height: 32px;
     font-weight: 400;
-    letter-spacing: 0.04rem;
     /* color: white; */
 }
 
 .text_small {
     color: rgb(41, 37, 36);
-    font-size: 14px;
+    font-size: 15px;
     line-height: 18px;
     font-weight: 400;
-    letter-spacing: 0.04rem;
 }
 
 .rounded_small {
@@ -185,13 +189,11 @@ html.visible {
 .price {
     color: rgb(41, 37, 36);
     font-weight: 400;
-    letter-spacing: -0.04rem;
     font-size: 150px;
     line-height: 134px;
 }
 
 h1 {
-    letter-spacing: 0.04rem;
     font-size: 60px;
     font-weight: 400;
     line-height: 54px;
@@ -211,6 +213,11 @@ h1 {
     perspective: 1000px;
 }
 
+.text_gray {
+    /* color: rgba(125, 123, 108, 1); */
+    color: rgba(110, 110, 115, 1);
+}
+
 @media (max-width: 600px) {
     .text-anim {
         padding-top: 0.02em;
@@ -218,7 +225,6 @@ h1 {
     }
 
     h1 {
-        letter-spacing: 0.04rem;
         font-size: 28px;
         font-weight: 400;
         line-height: 28px;
@@ -228,14 +234,12 @@ h1 {
         font-size: 16px;
         line-height: 22px;
         font-weight: 400;
-        letter-spacing: 0.04rem;
     }
 
     .text_md {
         font-size: 16px;
         line-height: 22px;
         font-weight: 600;
-        letter-spacing: 0.04rem;
     }
 
     .text_small {
@@ -243,22 +247,19 @@ h1 {
         font-size: 12px;
         line-height: 16px;
         font-weight: 400;
-        letter-spacing: 0.02rem;
     }
 
     .text-button {
         font-size: 16px;
         line-height: 22px;
         font-weight: 400;
-        letter-spacing: 0.04rem;
         /* color: white; */
     }
 
     .price {
         color: rgb(41, 37, 36);
         font-weight: 400;
-        letter-spacing: -0.04rem;
-        font-size: 120px;
+        font-size: 100px;
         line-height: 90px;
     }
 }
