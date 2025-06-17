@@ -12,6 +12,11 @@
             <div class="text overflow-x-auto">
                 <div class="flex justify-center gap-5 flex-wrap">
                     <a
+                        id="toMain"
+                        class="whitespace-nowrap cursor-pointer hover:opacity-50"
+                        >Головна</a
+                    >
+                    <a
                         id="toAbout"
                         class="whitespace-nowrap cursor-pointer hover:opacity-50"
                         >Про мене</a
@@ -86,6 +91,13 @@
     }
     window.addEventListener("scroll", handleScroll, {
         passive: true,
+    });
+
+    document.getElementById("toMain").addEventListener("click", (e) => {
+        e.preventDefault();
+        document.documentElement.classList.remove("visible");
+        history.pushState(null, null, "#main");
+        location.reload();
     });
 
     document.getElementById("toAbout").addEventListener("click", (e) => {
