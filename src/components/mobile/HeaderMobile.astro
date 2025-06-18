@@ -9,6 +9,13 @@
                 <div class="flex flex-col gap-5 overflow-x-hidden">
                     <p
                         class="max-[600px]:text-[36px] max-[600px]:leading-[36px] text-[60px] leading-[54px] text-[rgb(41,37,36)]"
+                        id="toMainMobile"
+                        class="w-fit"
+                    >
+                        Головна
+                    </p>
+                    <p
+                        class="max-[600px]:text-[36px] max-[600px]:leading-[36px] text-[60px] leading-[54px] text-[rgb(41,37,36)]"
                         id="toAboutMobile"
                         class="w-fit"
                     >
@@ -54,12 +61,20 @@
                             <br />
                         </p>
                         <div class="flex justify-between">
-                            <p class="w-fit text">Facebook</p>
+                            <a
+                                href="https://www.facebook.com/parhomak"
+                                class="w-fit text">Facebook</a
+                            >
                             <p class="opacity-50 text">|</p>
-                            <p class="w-fit text">Telegram</p>
+                            <a
+                                href="https://t.me/lindsylohan"
+                                class="w-fit text">Telegram</a
+                            >
                             <p class="opacity-50 text">|</p>
-
-                            <p class="w-fit text">Telegram-канал</p>
+                            <a
+                                href="https://t.me/svidomolife"
+                                class="w-fit text">Telegram-канал</a
+                            >
                         </div>
                     </div>
                 </div>
@@ -103,6 +118,7 @@
                     });
             };
 
+            addMenuClickHandler("toMainMobile", "main");
             addMenuClickHandler("toAboutMobile", "about");
             addMenuClickHandler("toPriceMobile", "price");
             addMenuClickHandler("toEducationMobile", "education");
