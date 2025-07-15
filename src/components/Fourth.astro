@@ -43,57 +43,61 @@
 </div>
 
 <script is:inline>
-    // gsap.registerPlugin(ScrollTrigger, SplitText);
     CustomEase.create("myEase", "0.27, 0.51, 0.32, 0.99");
 
     window.addEventListener("load", () => {
-        const containers = document.querySelectorAll(
-            ".text-animate-container-together",
-        );
-        const allLines = [];
-        const splitInstances = [];
+        document.fonts.ready.then(() => {
+            requestAnimationFrame(() => {
+                const containers = document.querySelectorAll(
+                    ".text-animate-container-together",
+                );
+                const allLines = [];
+                const splitInstances = [];
 
-        containers.forEach((container) => {
-            const children = container.hasAttribute("data-copy-wrapper")
-                ? Array.from(container.children)
-                : [container];
+                if (containers.length === 0) return;
 
-            children.forEach((el) => {
-                const split = new SplitText(el, {
-                    type: "lines",
-                    linesClass: "text-anim++",
-                    mask: "lines",
+                containers.forEach((container) => {
+                    const children = container.hasAttribute("data-copy-wrapper")
+                        ? Array.from(container.children)
+                        : [container];
+
+                    children.forEach((el) => {
+                        const split = new SplitText(el, {
+                            type: "lines",
+                            linesClass: "text-anim",
+                            mask: "lines",
+                        });
+
+                        splitInstances.push(split);
+                        allLines.push(...split.lines);
+
+                        const textIndent = getComputedStyle(el).textIndent;
+                        if (textIndent === "0px" && split.lines.length > 0) {
+                            split.lines[0].style.paddingLeft = textIndent;
+                            el.style.textIndent = "0";
+                        }
+                    });
                 });
 
-                splitInstances.push(split);
-                allLines.push(...split.lines);
+                gsap.set(allLines, { y: "100%" });
 
-                const textIndent = getComputedStyle(el).textIndent;
-                if (textIndent === "0px" && split.lines.length > 0) {
-                    split.lines[0].style.paddingLeft = textIndent;
-                    el.style.textIndent = "0";
-                }
+                gsap.to(allLines, {
+                    y: "0%",
+                    duration: 0.8,
+                    stagger: 0.06,
+                    ease: "myEase",
+                    delay: 0.3,
+                    scrollTrigger: {
+                        trigger: containers[0],
+                        start: "top 95%",
+                        once: true,
+                    },
+                });
+
+                window.addEventListener("beforeunload", () => {
+                    splitInstances.forEach((split) => split.revert());
+                });
             });
         });
-
-        gsap.set(allLines, { y: "100%" });
-
-        gsap.to(allLines, {
-            y: "0%",
-            duration: 0.8,
-            stagger: 0.06,
-            ease: "myEase",
-            delay: 0.3,
-            scrollTrigger: {
-                trigger: containers[0],
-                start: "top 95%",
-                once: true,
-                // markers: true,
-            },
-        });
-
-        // window.addEventListener("beforeunload", () => {
-        //     splitInstances.forEach((split) => split.revert());
-        // });
     });
 </script>

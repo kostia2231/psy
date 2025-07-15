@@ -76,12 +76,12 @@ import HeaderMobile from "../components/mobile/HeaderMobile.astro";
     });
 </script>
 
-<script>
+<script is:inline>
     if (window.innerWidth >= 600) {
-        window.addEventListener("scroll", () => {
-            const cardPrices = document.querySelectorAll(
-                ".slide-in",
-            ) as NodeListOf<HTMLElement>;
+        let ticking = false;
+
+        function handleScroll() {
+            const cardPrices = document.querySelectorAll(".slide-in");
 
             const windowHeight = window.innerHeight;
             const start = windowHeight * 0.95;
@@ -95,6 +95,19 @@ import HeaderMobile from "../components/mobile/HeaderMobile.astro";
                 card.style.opacity = (clamped + 0.1).toString();
                 card.style.transform = `translate3d(0, ${(1 - clamped) * 40}px, 0)`;
             });
+
+            ticking = false;
+        }
+
+        window.addEventListener("scroll", () => {
+            if (!ticking) {
+                requestAnimationFrame(handleScroll);
+                ticking = true;
+            }
+        });
+
+        window.addEventListener("load", () => {
+            requestAnimationFrame(handleScroll);
         });
     }
 </script>
