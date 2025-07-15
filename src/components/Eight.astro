@@ -1,4 +1,7 @@
-<!-- //scroll spilt script + 4 -->
+---
+
+---
+
 <div
     class="flex w-full min-h-[50vh] z-25 px-5 max-[600px]:px-2.5 pb-10 gap-[2px] max-[600px]:flex-col min-[600px]:top-45 sticky pink max-[600px]:gap-2.5"
 >
@@ -129,70 +132,118 @@
 </script>
 
 <script is:inline>
-    CustomEase.create("myEase", "0.27, 0.51, 0.32, 0.99");
+    if (window.innerWidth >= 600) {
+        // gsap.registerPlugin(ScrollTrigger, SplitText);
+        CustomEase.create("myEase", "0.27, 0.51, 0.32, 0.99");
 
-    function animateSplitText(containers) {
-        const allLines = [];
-        const splitInstances = [];
+        window.addEventListener("load", () => {
+            const containers = document.querySelectorAll(
+                ".text-animate-container-cards",
+            );
+            const allLines = [];
+            const splitInstances = [];
 
-        containers.forEach((container) => {
-            const children = container.hasAttribute("data-copy-wrapper")
-                ? Array.from(container.children)
-                : [container];
+            containers.forEach((container) => {
+                const children = container.hasAttribute("data-copy-wrapper")
+                    ? Array.from(container.children)
+                    : [container];
 
-            children.forEach((el) => {
-                const split = new SplitText(el, {
-                    type: "lines",
-                    linesClass: "text-anim",
-                    mask: "lines",
+                children.forEach((el) => {
+                    const split = new SplitText(el, {
+                        type: "lines",
+                        linesClass: "text-anim",
+                        mask: "lines",
+                    });
+
+                    splitInstances.push(split);
+                    allLines.push(...split.lines);
+
+                    const textIndent = getComputedStyle(el).textIndent;
+                    if (textIndent === "0px" && split.lines.length > 0) {
+                        split.lines[0].style.paddingLeft = textIndent;
+                        el.style.textIndent = "0";
+                    }
+                });
+            });
+
+            gsap.set(allLines, { y: "100%" });
+
+            gsap.to(allLines, {
+                y: "0%",
+                duration: 0.8,
+                stagger: 0.06,
+                ease: "myEase",
+                delay: 0.3,
+
+                scrollTrigger: {
+                    trigger: containers[0],
+                    start: "top 95%",
+                    once: true,
+                    // markers: true,
+                },
+            });
+
+            window.addEventListener("beforeunload", () => {
+                splitInstances.forEach((split) => split.revert());
+            });
+        });
+    } else {
+        // gsap.registerPlugin(ScrollTrigger);
+
+        window.addEventListener("load", () => {
+            const containers = document.querySelectorAll(
+                "[data-copy-wrapper], .text-animate-container-cards",
+            );
+            CustomEase.create("myEase", "0.27, 0.51, 0.32, 0.99");
+
+            containers.forEach((container) => {
+                let elements = container.hasAttribute("data-copy-wrapper")
+                    ? Array.from(container.children)
+                    : [container];
+
+                let splitInstances = [];
+                let lines = [];
+
+                elements.forEach((el) => {
+                    const split = new SplitText(el, {
+                        type: "lines",
+                        linesClass: "text-anim",
+                        mask: "lines",
+                    });
+                    splitInstances.push(split);
+                    lines.push(...split.lines);
+
+                    const computedStyle = window.getComputedStyle(el);
+                    const textIndent = computedStyle.textIndent;
+                    if (
+                        textIndent &&
+                        textIndent === "0px" &&
+                        split.lines.length > 0
+                    ) {
+                        split.lines[0].style.paddingLeft = textIndent;
+                        el.style.textIndent = "0";
+                    }
                 });
 
-                splitInstances.push(split);
-                allLines.push(...split.lines);
+                gsap.set(lines, { y: "100%" });
 
-                const textIndent = getComputedStyle(el).textIndent;
-                if (textIndent === "0px" && split.lines.length > 0) {
-                    split.lines[0].style.paddingLeft = textIndent;
-                    el.style.textIndent = "0";
-                }
+                gsap.to(lines, {
+                    y: "0%",
+                    duration: 0.8,
+                    stagger: 0.06,
+                    ease: "myEase",
+                    // delay: 0.5,
+                    delay: 0.3,
+
+                    scrollTrigger: {
+                        trigger: container,
+                        start: "top 95%",
+                        once: true,
+                    },
+                });
+
+                splitInstances.forEach((split) => split.revert());
             });
-        });
-
-        gsap.set(allLines, { y: "100%" });
-
-        gsap.to(allLines, {
-            y: "0%",
-            duration: 0.8,
-            stagger: 0.06,
-            ease: "myEase",
-            delay: 0.3,
-            scrollTrigger: {
-                trigger: containers[0],
-                start: "top 95%",
-                once: true,
-            },
-        });
-
-        window.addEventListener("beforeunload", () => {
-            splitInstances.forEach((split) => split.revert());
         });
     }
-
-    window.addEventListener("load", () => {
-        document.fonts.ready.then(() => {
-            requestAnimationFrame(() => {
-                const isDesktop = window.innerWidth >= 600;
-
-                const selector = isDesktop
-                    ? ".text-animate-container-cards"
-                    : "[data-copy-wrapper], .text-animate-container-cards";
-
-                const containers = document.querySelectorAll(selector);
-
-                if (containers.length > 0) {
-                    animateSplitText(containers);
-                }
-            });
-        });
-    });
 </script>
