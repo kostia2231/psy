@@ -151,7 +151,7 @@
                 children.forEach((el) => {
                     const split = new SplitText(el, {
                         type: "lines",
-                        linesClass: "text-anim",
+                        linesClass: "text-anim++",
                         mask: "lines",
                     });
 
@@ -183,9 +183,9 @@
                 },
             });
 
-            window.addEventListener("beforeunload", () => {
-                splitInstances.forEach((split) => split.revert());
-            });
+            // window.addEventListener("beforeunload", () => {
+            //     splitInstances.forEach((split) => split.revert());
+            // });
         });
     } else {
         // gsap.registerPlugin(ScrollTrigger);
@@ -207,7 +207,7 @@
                 elements.forEach((el) => {
                     const split = new SplitText(el, {
                         type: "lines",
-                        linesClass: "text-anim",
+                        linesClass: "text-anim++",
                         mask: "lines",
                     });
                     splitInstances.push(split);
@@ -242,7 +242,7 @@
                     },
                 });
 
-                splitInstances.forEach((split) => split.revert());
+                // splitInstances.forEach((split) => split.revert());
             });
         });
     }
