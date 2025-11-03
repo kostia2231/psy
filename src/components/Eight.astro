@@ -136,7 +136,7 @@
         // gsap.registerPlugin(ScrollTrigger, SplitText);
         CustomEase.create("myEase", "0.27, 0.51, 0.32, 0.99");
 
-        window.addEventListener("load", () => {
+        window.addEventListener("DOMContentLoaded", () => {
             const containers = document.querySelectorAll(
                 ".text-animate-container-cards",
             );
@@ -190,7 +190,7 @@
     } else {
         // gsap.registerPlugin(ScrollTrigger);
 
-        window.addEventListener("load", () => {
+        window.addEventListener("DOMContentLoaded", () => {
             const containers = document.querySelectorAll(
                 "[data-copy-wrapper], .text-animate-container-cards",
             );

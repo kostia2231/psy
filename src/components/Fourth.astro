@@ -45,7 +45,7 @@
 <script is:inline>
     CustomEase.create("myEase", "0.27, 0.51, 0.32, 0.99");
 
-    window.addEventListener("load", () => {
+    window.addEventListener("DOMContentLoaded", () => {
         document.fonts.ready.then(() => {
             requestAnimationFrame(() => {
                 const containers = document.querySelectorAll(

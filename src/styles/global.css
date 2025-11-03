@@ -112,19 +112,16 @@
 html {
     background-color: rgba(243, 243, 238, 1);
     margin: 0;
-    text-color: white;
+    color: white;
     box-sizing: border-box;
-    height: auto;
-    /* width: 100wh; */
-    /* overflow-x: hidden; */
     opacity: 0;
     transition: opacity 1s ease;
-    position: flex;
+    display: flex;
     flex-direction: column;
 }
 
 html.visible {
-    opacity: 1;
+    opacity: 1 !important;
     transition: opacity 1s ease-in-out;
 }
 
