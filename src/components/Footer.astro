@@ -3,191 +3,109 @@ import Button from "./Button.astro";
 ---
 
 <div id="contacts" class="h-full w-full sticky top-0 bg-white z-40">
-    <div
-        class="line absolute top-0 left-10 right-10 h-[2px] yellow z-10 transform -translate-y-1/2 rounded-full max-[600px]:hidden"
-    >
+  <div class="line absolute top-0 left-10 right-10 h-[2px] yellow z-10 transform -translate-y-1/2 rounded-full max-[600px]:hidden"></div>
+
+  <div class="h-[50vh] flex flex-col justify-center items-center w-full gap-5 bg-white rounded_top">
+    <Button />
+    <div class="text text-center opacity-50 max-[600px]:px-5">
+      *Консультація можлива українською та російською мовами.
     </div>
-    <div
-        class="h-[50vh] flex flex-col justify-center items-center w-full gap-5 bg-white rounded_top"
-    >
-        <Button />
-        <div class="text text-center opacity-50 max-[600px]:px-5">
-            *Консультація можлива українською та російською мовами.
+  </div>
+
+  <div class="h-fit bg-white">
+    <footer class="h-[50vh] yellow rounded_top p-10 max-[600px]:p-5 flex flex-col justify-between z-30">
+      <div class="text flex justify-between">
+        <div>
+          Для зв'язку можете написати мені у
+          <a
+            href="https://www.facebook.com/parhomak"
+            class="gray px-3 py-0.5 rounded-[20px] hover:opacity-50 transition-opacity ease-in duration-100"
+            >facebook</a
+          >
+          або
+          <a
+            href="https://t.me/lindsylohan"
+            class="gray px-3 py-0.5 rounded-[20px] hover:opacity-50 transition-opacity ease-in duration-100"
+            >telegram</a
+          >,
+          <br />
+          Більше про психологію — на моєму
+          <a
+            class="gray px-3 py-0.5 rounded-[20px] hover:opacity-50 transition-opacity ease-in duration-100"
+            href="https://t.me/svidomolife"
+            >telegram-каналі</a
+          >.
         </div>
-    </div>
 
-    <div class="h-fit bg-white">
-        <footer
-            class="h-[50vh] yellow rounded_top p-10 max-[600px]:p-5 flex flex-col justify-between z-30"
-        >
-            <div class="text flex justify-between">
-                <div>
-                    Для зв'язку можете написати мені у <butt
-                        href="https://www.facebook.com/parhomak"
-                        class="gray px-3 py-0.5 rounded-[20px] hover:opacity-50 transition-opacity ease-in duration-100"
-                        >facebook</butt
-                    > або <butt
-                        href="https://t.me/lindsylohan"
-                        class="gray px-3 py-0.5 rounded-[20px] hover:opacity-50 transition-opacity ease-in duration-100"
-                        >telegram</butt
-                    >, <br />Більше про психологію — на моєму <butt
-                        class="gray px-3 py-0.5 rounded-[20px] hover:opacity-50 transition-opacity ease-in duration-100"
-                        href="https://t.me/svidomolife">telegram-каналі</butt
-                    >.
-                </div>
-                <div class="max-[600px]:hidden">
-                    <button
-                        id="toUp"
-                        class="text w-fit px-3 py-1 rounded-[20px] text opacity-100 hover:opacity-50 transition-opacity ease-in duration-100 cursor-pointer gray"
-                    >
-                        нагору
-                    </button>
-                </div>
-            </div>
-            <div
-                class="text_small grid grid-cols-2 gap-20 max-[600px]:grid-cols-1"
-            >
-                <div>
-                    Марія Пархоменко <br /> лікарка, гештальт-консультантка, ведуча
-                    терапевтичних груп. <br /><br />©2025. Усі права захищені. <br
-                    />
-                </div>
-                <div class="max-[600px]:hidden">
-                    Карта сайту: <br />
-                    <button
-                        id="toMainFooter"
-                        class="cursor-pointer hover:opacity-50 transition-opacity ease-in duration-100"
-                        >Головна</button
-                    >
-                    <span class="opacity-50">|</span>
-                    <button
-                        id="toAboutFooter"
-                        class="cursor-pointer hover:opacity-50 transition-opacity ease-in duration-100"
-                        >Про мене</button
-                    >
-                    <span class="opacity-50">|</span>
+        <div class="max-[600px]:hidden">
+          <button
+            id="toUp"
+            class="text w-fit px-3 py-1 rounded-[20px] text opacity-100 hover:opacity-50 transition-opacity ease-in duration-100 cursor-pointer gray"
+          >
+            нагору
+          </button>
+        </div>
+      </div>
 
-                    <button
-                        class="cursor-pointer hover:opacity-50 transition-opacity ease-in duration-100"
-                        id="toPriceFooter">Умови</button
-                    >
-                    <span class="opacity-50">|</span>
-                    <button
-                        class="cursor-pointer hover:opacity-50 transition-opacity ease-in duration-100"
-                        id="toEducationFooter">Освіта і підготовка</button
-                    >
-                    <span class="opacity-50">|</span>
-                    <button
-                        class="cursor-pointer hover:opacity-50 transition-opacity ease-in duration-100"
-                        id="toGroupsFooter">Групи і майстер-класи</button
-                    >
-                    <span class="opacity-50">|</span>
-                    <button
-                        class="cursor-pointer hover:opacity-50 transition-opacity ease-in duration-100"
-                        id="toContactsFooter">Контакти</button
-                    >.
-                </div>
-            </div>
-        </footer>
-    </div>
+      <div class="text_small grid grid-cols-2 gap-20 max-[600px]:grid-cols-1">
+        <div>
+          Марія Пархоменко <br />
+          лікарка, гештальт-консультантка, ведуча терапевтичних груп.
+          <br /><br />©2025. Усі права захищені.
+        </div>
+
+        <div class="max-[600px]:hidden">
+          Карта сайту:
+          <br />
+          <button id="toMainFooter" class="cursor-pointer hover:opacity-50 transition-opacity ease-in duration-100">Головна</button>
+          <span class="opacity-50">|</span>
+          <button id="toAboutFooter" class="cursor-pointer hover:opacity-50 transition-opacity ease-in duration-100">Про мене</button>
+          <span class="opacity-50">|</span>
+          <button id="toPriceFooter" class="cursor-pointer hover:opacity-50 transition-opacity ease-in duration-100">Умови</button>
+          <span class="opacity-50">|</span>
+          <button id="toEducationFooter" class="cursor-pointer hover:opacity-50 transition-opacity ease-in duration-100">Освіта і підготовка</button>
+          <span class="opacity-50">|</span>
+          <button id="toGroupsFooter" class="cursor-pointer hover:opacity-50 transition-opacity ease-in duration-100">Групи і майстер-класи</button>
+          <span class="opacity-50">|</span>
+          <button id="toContactsFooter" class="cursor-pointer hover:opacity-50 transition-opacity ease-in duration-100">Контакти</button>.
+        </div>
+      </div>
+    </footer>
+  </div>
 </div>
 
 <script is:inline>
-    document.getElementById("toAboutFooter").addEventListener("click", (e) => {
+  const buttons = [
+    ["toAboutFooter", "#about"],
+    ["toPriceFooter", "#price"],
+    ["toEducationFooter", "#education"],
+    ["toContactsFooter", "#contacts"],
+    ["toGroupsFooter", "#groups"],
+    ["toMainFooter", "#main"],
+  ];
+
+  buttons.forEach(([id, hash]) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("click", (e) => {
         e.preventDefault();
         document.documentElement.classList.remove("visible");
-        history.pushState(null, null, "#about");
+        history.pushState(null, null, hash);
         location.reload();
-    });
+      });
+    }
+  });
 
-    document.getElementById("toPriceFooter").addEventListener("click", (e) => {
-        e.preventDefault();
-        document.documentElement.classList.remove("visible");
-        history.pushState(null, null, "#price");
-        location.reload();
-    });
+  window.addEventListener("DOMContentLoaded", () => {
+    const hash = window.location.hash;
+    document.documentElement.classList.add("visible");
 
-    document
-        .getElementById("toEducationFooter")
-        .addEventListener("click", (e) => {
-            e.preventDefault();
-            document.documentElement.classList.remove("visible");
-            history.pushState(null, null, "#education");
-            location.reload();
-        });
-
-    document
-        .getElementById("toContactsFooter")
-        .addEventListener("click", (e) => {
-            e.preventDefault();
-            document.documentElement.classList.remove("visible");
-            history.pushState(null, null, "#contacts");
-            location.reload();
-        });
-
-    document.getElementById("toGroupsFooter").addEventListener("click", (e) => {
-        e.preventDefault();
-        document.documentElement.classList.remove("visible");
-        history.pushState(null, null, "#groups");
-        location.reload();
-    });
-
-    document.getElementById("toMainFooter").addEventListener("click", (e) => {
-        e.preventDefault();
-        document.documentElement.classList.remove("visible");
-        history.pushState(null, null, "#main");
-        location.reload();
-    });
-
-    window.addEventListener("DOMContentLoaded", () => {
-        const hash = window.location.hash;
-
-        // const up = document.getElementById("toUp");
-        // console.log(up);
-        // up.addEventListener("click", () => {
-        //     console.log("clicked");
-        //     window.scrollTo({ top: 0, behavior: "smooth" });
-        // });
-
-        document.documentElement.classList.add("visible");
-        if (hash === "#about") {
-            const target = document.getElementById("about");
-            if (target) {
-                target.scrollIntoView({ behavior: "instant", block: "start" });
-                history.replaceState(null, null, window.location.pathname);
-            }
-        }
-
-        if (hash === "#price") {
-            const target = document.getElementById("price");
-            if (target) {
-                target.scrollIntoView({ behavior: "instant", block: "start" });
-                history.replaceState(null, null, window.location.pathname);
-            }
-        }
-
-        if (hash === "#education") {
-            const target = document.getElementById("education");
-            if (target) {
-                target.scrollIntoView({ behavior: "instant", block: "start" });
-                history.replaceState(null, null, window.location.pathname);
-            }
-        }
-
-        if (hash === "#contacts") {
-            const target = document.getElementById("contacts");
-            if (target) {
-                target.scrollIntoView({ behavior: "instant", block: "start" });
-                history.replaceState(null, null, window.location.pathname);
-            }
-        }
-
-        if (hash === "#groups") {
-            const target = document.getElementById("groups");
-            if (target) {
-                target.scrollIntoView({ behavior: "instant", block: "start" });
-                history.replaceState(null, null, window.location.pathname);
-            }
-        }
-    });
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) {
+        target.scrollIntoView({ behavior: "instant", block: "start" });
+        history.replaceState(null, null, window.location.pathname);
+      }
+    }
+  });
 </script>
