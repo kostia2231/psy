@@ -1,184 +1,90 @@
 <div
-    id="navbarArea"
-    class="fixed top-0 left-0 right-0 z-100 w-full h-10 max-[500px]:hidden"
->
-</div>
+  id="navbarArea"
+  class="fixed top-0 left-0 right-0 z-100 w-full h-10 max-[500px]:hidden"
+></div>
+
 <div
-    id="navbar"
-    class="fixed top-0 left-0 right-0 z-100 mx-5 mt-5 transition-all duration-250 ease-out max-[500px]:hidden"
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-100 mx-5 mt-5 transition-all duration-250 ease-out max-[500px]:hidden"
 >
-    <div
-        class="w-full shadow-xs bg-white py-5 rounded_small"
-    >
-        <div class="max-w-screen-xl mx-auto px-4">
-            <div class="text overflow-x-auto">
-                <div class="flex justify-center gap-5 flex-wrap">
-                    <a
-                        id="toMain"
-                        class="whitespace-nowrap cursor-pointer hover:opacity-50"
-                        >Головна</a
-                    >
-                    <a
-                        id="toAbout"
-                        class="whitespace-nowrap cursor-pointer hover:opacity-50"
-                        >Про мене</a
-                    >
-                    <a
-                        id="toPrice"
-                        class="whitespace-nowrap cursor-pointer hover:opacity-50"
-                        >Умови</a
-                    >
-                    <a
-                        id="toEducation"
-                        class="whitespace-nowrap cursor-pointer hover:opacity-50"
-                        >Освіта і підготовка</a
-                    >
-                    <a
-                        id="toGroups"
-                        class="whitespace-nowrap cursor-pointer hover:opacity-50"
-                        >Групи і майстер-класи</a
-                    >
-                    <a
-                        id="toContacts"
-                        class="whitespace-nowrap cursor-pointer hover:opacity-50"
-                        >Контакти</a
-                    >
-                </div>
-            </div>
+  <div class="w-full shadow-xs bg-white py-5 rounded_small">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <div class="text overflow-x-auto">
+        <div id="nav-links" class="flex justify-center gap-5 flex-wrap">
+          <a id="toMain" class="header-link whitespace-nowrap cursor-pointer hover:opacity-50">Головна</a>
+          <a id="toAbout" class="header-link whitespace-nowrap cursor-pointer hover:opacity-50">Про мене</a>
+          <a id="toPrice" class="header-link whitespace-nowrap cursor-pointer hover:opacity-50">Умови</a>
+          <a id="toEducation" class="header-link whitespace-nowrap cursor-pointer hover:opacity-50">Освіта і підготовка</a>
+          <a id="toGroups" class="header-link whitespace-nowrap cursor-pointer hover:opacity-50">Групи і майстер-класи</a>
+          <a id="toContacts" class="header-link whitespace-nowrap cursor-pointer hover:opacity-50">Контакти</a>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <script is:inline>
-    window.addEventListener("DOMContentLoaded", () => {
-        const colors = ["rgba(229,226,141,1)", "rgba(245,195,196,1)"];
-        const links = document.querySelectorAll(".header-link");
-        links.forEach((l) => {
-            if (l) {
-                l.addEventListener("mouseenter", () => {
-                    console.log("en");
-                    const randomColor =
-                        colors[Math.floor(Math.random() * colors.length)];
-                    l.style.color = randomColor;
-                });
-
-                l.addEventListener("mouseleave", () => {
-                    l.style.color = "rgba(31,31,31,1)";
-                });
-            }
-        });
+  window.addEventListener("DOMContentLoaded", () => {
+    const colors = ["rgba(229,226,141,1)", "rgba(245,195,196,1)"];
+    document.querySelectorAll(".header-link").forEach((l) => {
+      l.addEventListener("mouseenter", () => {
+        l.style.color = colors[Math.floor(Math.random() * colors.length)];
+      });
+      l.addEventListener("mouseleave", () => {
+        l.style.color = "rgba(31,31,31,1)";
+      });
     });
-</script>
 
-<script is:inline>
     let lastScrollTop = 0;
     const navbar = document.getElementById("navbar");
-    const navbarHeight = navbar ? navbar.offsetHeight : 0;
+    const navbarHeight = navbar?.offsetHeight || 0;
     const navbarArea = document.getElementById("navbarArea");
 
-    navbarArea.addEventListener("mouseenter", () => {
-        navbar.style.transform = "translateY(0)";
+    navbarArea?.addEventListener("mouseenter", () => {
+      navbar.style.transform = "translateY(0)";
     });
-    navbarArea.addEventListener("mouseleave", () => {});
 
     function handleScroll() {
-        const scrollTop =
-            window.pageYOffset || document.documentElement.scrollTop;
-        if (navbar && scrollTop > lastScrollTop && scrollTop > navbarHeight) {
-            navbar.style.transform = "translateY(-130%)";
-        } else {
-            navbar.style.transform = "translateY(0)";
-        }
-        lastScrollTop = scrollTop;
+      const scrollTop = window.scrollY;
+      if (scrollTop > lastScrollTop && scrollTop > navbarHeight) {
+        navbar.style.transform = "translateY(-130%)";
+      } else {
+        navbar.style.transform = "translateY(0)";
+      }
+      lastScrollTop = scrollTop;
     }
-    window.addEventListener("scroll", handleScroll, {
-        passive: true,
-    });
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-    document.getElementById("toMain").addEventListener("click", (e) => {
+    const links = [
+      ["toMain", "#main"],
+      ["toAbout", "#about"],
+      ["toPrice", "#price"],
+      ["toEducation", "#education"],
+      ["toGroups", "#groups"],
+      ["toContacts", "#contacts"],
+    ];
+
+    links.forEach(([id, hash]) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener("click", (e) => {
         e.preventDefault();
         document.documentElement.classList.remove("visible");
-        history.pushState(null, null, "#main");
+        history.pushState(null, null, hash);
         location.reload();
+      });
     });
 
-    document.getElementById("toAbout").addEventListener("click", (e) => {
-        e.preventDefault();
-        document.documentElement.classList.remove("visible");
-        history.pushState(null, null, "#about");
-        location.reload();
-    });
-
-    document.getElementById("toPrice").addEventListener("click", (e) => {
-        e.preventDefault();
-        document.documentElement.classList.remove("visible");
-        history.pushState(null, null, "#price");
-        location.reload();
-    });
-
-    document.getElementById("toEducation").addEventListener("click", (e) => {
-        e.preventDefault();
-        document.documentElement.classList.remove("visible");
-        history.pushState(null, null, "#education");
-        location.reload();
-    });
-
-    document.getElementById("toContacts").addEventListener("click", (e) => {
-        e.preventDefault();
-        document.documentElement.classList.remove("visible");
-        history.pushState(null, null, "#contacts");
-        location.reload();
-    });
-
-    document.getElementById("toGroups").addEventListener("click", (e) => {
-        e.preventDefault();
-        document.documentElement.classList.remove("visible");
-        history.pushState(null, null, "#groups");
-        location.reload();
-    });
-
-    window.addEventListener("DOMContentLoaded", () => {
-        const hash = window.location.hash;
-
+    const hash = window.location.hash;
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) {
         document.documentElement.classList.add("visible");
-        if (hash === "#about") {
-            const target = document.getElementById("about");
-            if (target) {
-                target.scrollIntoView({ behavior: "instant", block: "start" });
-                history.replaceState(null, null, window.location.pathname);
-            }
-        }
-
-        if (hash === "#price") {
-            const target = document.getElementById("price");
-            if (target) {
-                target.scrollIntoView({ behavior: "instant", block: "start" });
-                history.replaceState(null, null, window.location.pathname);
-            }
-        }
-
-        if (hash === "#education") {
-            const target = document.getElementById("education");
-            if (target) {
-                target.scrollIntoView({ behavior: "instant", block: "start" });
-                history.replaceState(null, null, window.location.pathname);
-            }
-        }
-
-        if (hash === "#contacts") {
-            const target = document.getElementById("contacts");
-            if (target) {
-                target.scrollIntoView({ behavior: "instant", block: "start" });
-                history.replaceState(null, null, window.location.pathname);
-            }
-        }
-
-        if (hash === "#groups") {
-            const target = document.getElementById("groups");
-            if (target) {
-                target.scrollIntoView({ behavior: "instant", block: "start" });
-                history.replaceState(null, null, window.location.pathname);
-            }
-        }
-    });
+        target.scrollIntoView({ behavior: "instant", block: "start" });
+        history.replaceState(null, null, window.location.pathname);
+      }
+    } else {
+      document.documentElement.classList.add("visible");
+    }
+  });
 </script>
