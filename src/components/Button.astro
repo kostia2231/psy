@@ -4,12 +4,13 @@
     >
         ЗАПИСАТИСЯ НА КОНСУЛЬТАЦІЮ
     </button>
-</div>
 
 <script is:inline>
     window.addEventListener("DOMContentLoaded", () => {
         const btnColors = ["rgba(229,226,141,1)", "rgba(245,195,196,1)"];
         const btns = document.querySelectorAll(".cstmButton");
+        const popUp = document.getElementById("pop-up");
+        console.log(popUp);
 
         btns.forEach((btn) => {
             if (btn) {
@@ -24,7 +25,9 @@
                 });
 
                 btn.addEventListener("click", () => {
-                    window.open("https://t.me/lindsylohan", "_self");
+                    if(popUp.style.visibility !== "visible"){
+                        popUp.style.visibility = "visible";
+                    }
                 });
             }
         });
