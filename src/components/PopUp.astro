@@ -43,6 +43,7 @@ export const prerender = false;
     popup.addEventListener("click", (event) => {
       if (!form.contains(event.target as Node)) {
         popup.style.visibility = "hidden";
+        message.textContent = "";
       }
     });
     async function handleSubmit(event: Event) {
