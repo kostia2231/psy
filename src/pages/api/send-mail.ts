@@ -5,8 +5,6 @@ import nodemailer from "nodemailer";
 
 export const post: APIRoute = async ({ request }) => {
   const data = await request.json();
-  console.log("Action received:", data);
-
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
