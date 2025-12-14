@@ -17,9 +17,9 @@ export const post: APIRoute = async ({ request }) => {
 
   await transporter.sendMail({
     from: `<your-email@gmail.com>`,
-    to: "kostia505@gmail.com",
+    to: "parhomak30@gmail.com",
     subject: "Заявка на консультацію!",
-    text: `Імʼя: ${data.name}\nТелефон: ${data.phone}\nПроблема: ${data.problem}`,
+    text: `Імʼя: ${data.name}\nТелефон: ${data.phone}\n`,
   });
 
   return new Response(JSON.stringify({ success: true }), { status: 200 });

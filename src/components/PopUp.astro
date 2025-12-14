@@ -8,7 +8,7 @@ export const prerender = false;
   class="h-[100dvh] w-full fixed min-[600px]:top-0 bg-black/20 z-100 flex min-[600px]:justify-center min-[600px]:items-center max-[600px]:justify-center max-[600px]:pt-20"
   style="visibility: hidden;"
 >
-  <div class="w-[50vw] h-fit bg-white rounded-2xl shadow text-black max-[600px]:p-5 form-wrapper p-10">
+  <div class="w-[40vw] h-fit bg-white rounded-2xl shadow text-black max-[600px]:p-5 form-wrapper p-10">
     <!-- @ts-ignore -->
     <form
       id="form_termin"
@@ -16,10 +16,10 @@ export const prerender = false;
     >
       <h2 class="form-title">Консультація</h2>
       <h3 class="text_gray form-text">Залиште заявку і я звʼяжуся с вами ближайшим часом!</h3>
-      <input name="name" type="text" placeholder="Ваше імʼя" class="p-5 max-[600px]:p-2.5 rounded_small focus:outline-none focus:ring-2 focus:ring-[#E5E28D] bg-gray-100" />
-      <input name="phone" type="tel" placeholder="Телефон" class="p-5 max-[600px]:p-2.5 rounded_small focus:outline-none focus:ring-2 focus:ring-[#E5E28D] bg-gray-100" />
-      <textarea  name="problem" placeholder="Опишіть проблему" class="p-5 max-[600px]:p-2.5 rounded_small focus:outline-none focus:ring-2 focus:ring-[#E5E28D] bg-gray-100 resize-none h-32"></textarea>
-      <div class="flex gap-5 items-center">
+      <input name="name" type="text" placeholder="Ваше імʼя" class="text-[15px] p-5 max-[600px]:p-2.5 rounded_small focus:outline-none focus:ring-2 focus:ring-[#E5E28D] bg-gray-100" />
+      <input name="phone" type="text" placeholder="Телефон/ WhatsApp/ Telegram " class="text-[15px] p-5 max-[600px]:p-2.5 rounded_small focus:outline-none focus:ring-2 focus:ring-[#E5E28D] bg-gray-100" />
+      <!-- <div class="flex gap-5 items-center"> -->
+      <div class="text-[15px] text_gray">*Номер телефону, до якого прив'язаний ваш месенджер (або ваш @нік)</div>
       <button id="submit-btn" type="submit" class="
           disabled:bg-gray-400 disabled:cursor-not-allowed disabled:text-gray-200
       text-center text-animate-container cstmButton p-5 bg-[rgba(41,37,36,1)] w-fit max-[600px]:w-full text-button rounded_small cursor-pointer hover:text-[rgba(41,37,36,1)] text-white transition-colors duration-100 ease-in-out">

@@ -8,7 +8,6 @@ export const server = {
     input: z.object({
       name: z.string().min(1),
       phone: z.string().min(1),
-      problem: z.string().min(1),
     }),
     handler: async (formData) => {
       console.log("form data:", formData);
@@ -24,13 +23,12 @@ export const server = {
 
       await transporter.sendMail({
         from: "Новий кліент",
-        to: "kostia505@gmail.com",
+        to: "parhomak30@gmail.com",
         subject: "Заявка на консультацію!",
         text: ` 
           Нова заявка:
           Імʼя: ${formData.name}
-          Телефон: ${formData.phone}
-          Проблема: ${formData.problem}
+          Контакт: ${formData.phone}
         `,
       });
 
